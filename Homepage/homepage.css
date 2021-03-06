@@ -10,7 +10,6 @@ body {
 .nav {
     position: relative;
     z-index: 9;
-    /*background-color: rgb(139, 203, 187);*/
 }
 .nav_container {
     display: flex;
@@ -49,6 +48,9 @@ body {
     text-decoration: none;
 }
 .nav ul li a:visited {
+    color: white;
+}
+.nav ul li a:active {
     color: white;
 }
 .background {
