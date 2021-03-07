@@ -8,7 +8,7 @@
 <body>
     <nav class="nav">
     <div class="nav_container">
-        <span>NEIGHBORHOOD</span>
+        <a href="../Homepage/homepage.html">NEIGHBORHOOD</a>
     </div>
 </nav>
     <img src="../assets/login.jpg" alt="Login Figure"
@@ -30,6 +30,16 @@
                 </label>
                 <label class="login_input">
                     <input type="password" name="login_pwd">
+                </label>
+                <label class="login_text">
+                    User Type
+                </label>
+                <label>
+                    <select class="login_input">
+                        <option value="SubdivisionOwner">Subdivision Owner</option>
+                        <option value="BuildingOwner">Building Owner</option>
+                        <option value="ApartmentOwner">Apartment Owner</option>
+                    </select>
                 </label>
                 <button class="login_submit" type="submit">
                     Submit
