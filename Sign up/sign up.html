@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>SIGN UP</title>
+	<link rel="stylesheet" href="sign up.css" type="text/css">
+</head>
+<body style="background-color: rgb(139,203,187);">
+	<nav class="nav">
+        <div class="nav_container">
+            <span>NEIGHBORHOOD</span>
+            <ul>
+                <li><a href="../Homepage/homepage.html">Home</a></li>
+                <li><a>Dashboard</a></li>
+                <!-- <li><a href="#why_us">Why Us</a></li> -->
+                <li><a>Contact Us</a></li>
+                <li><a>Sign in</a></li>
+                <li><a href="../Sign up/sign up.html">Sign up</a></li>
+            </ul>
+        </div>
+    </nav>
+	<div align="center">
+		<form class="sign_up_form">
+			<div id="aid">
+				<h3>What do you want Sign up for</h3>
+				<table>
+					<tr>
+						<td><label>Register Type:</label></td>
+						<td>
+								<select id="type_name" onchange="listen_sign_up_type_selected()">
+								<option value=""></option>
+								<option value="Subdivision">Subdivision</option>
+								<option value="Building">Building</option>
+								<option value="Apartment">Apartment</option>
+							</select>
+						</td>
+					</tr>
+				</table>
+				
+				
+			</div>
+
+			<div id="type_id"></div>
+			<div id="personal_information" style="display: none;">
+				<h3>Personal Information</h3>
+				<table>
+					<tr>
+						<td>Name:</td>
+						<td><input type="text" name="name"></td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><input type="text" name="password"></td>
+					</tr>
+					<tr>
+						<td>Confirm Password:</td>
+						<td><input type="text" name="c_password"></td>
+					</tr>
+					<tr>
+						<td>Age:</td>
+						<td><input type="text" name="age"></td>
+					</tr>
+					<tr>
+						<td>Gender:</td>
+						<td><input type="text" name="gender"></td>
+					</tr>
+					<tr>
+						<td>Email:</td>
+						<td><input type="text" name="email"></td>
+					</tr>
+					<tr>
+						<td>Telephone:</td>
+						<td><input type="text" name="telephone"></td>
+					</tr>
+				</table>
+			</div>
+
+		
+		</form>
+	</div>
+	
+	
+
+</body>
+<script type="text/javascript">
+	function listen_sign_up_type_selected() {
+		var myselect=document.getElementById("type_name");
+		var type = myselect.value;
+		console.log(type);
+		if (type == "Subdivision"){
+			var input = "<h3>Your Preference</h3><table><tr><td>Subdivision Name:</td><td><input type=\"text\"></td></tr>";
+			input += "<tr><td>Subdivision Address:</td><td><input type=\"text\"></td></tr></table>";
+			var sign_up_id_div = document.getElementById("type_id");
+			sign_up_id_div.innerHTML = input;
+		} 
+		if (type == "Building"){
+			var input = "<h3>Your Preference</h3><table><tr><td>Subdivision Name:</td><td><select id=\"subdivision_name\"></select></td></tr>";
+			input += "<tr><td>Building Number</td><td><input type=\"text\"></td></tr></table>";
+			var sign_up_id_div = document.getElementById("type_id");
+			sign_up_id_div.innerHTML = input;
+			var subdivision_name = document.getElementById("subdivision_name");
+			for (var i = 0; i < 5; i++) {
+				subdivision_name.options.add(new Option(i+1, i+1));
+			}
+		} 
+		if (type == "Apartment"){
+			var input = "<h3>Your Preference</h3><table><tr><td>Subdivision Name:</td><td><select id=\"subdivision_name\"></select></td></tr>";
+			input += "<tr><td>Building Number</td><td><select id=\"building_number\"></select></td></tr>";
+			input += "<tr><td>Apartment Number</td><td><select id=\"apartment_number\"></select></td></tr></table>";
+			var sign_up_id_div = document.getElementById("type_id");
+			sign_up_id_div.innerHTML = input;
+			var subdivision_name = document.getElementById("subdivision_name");
+			var building_number = document.getElementById("building_number");
+			var apartment_number = document.getElementById("apartment_number");
+			for (var i = 0; i < 5; i++) {
+				subdivision_name.options.add(new Option(i+1, i+1));
+				building_number.options.add(new Option(i+1, i+1));
+				apartment_number.options.add(new Option(i+1, i+1));
+			}
+		} 
+
+		
+		document.getElementById("personal_information").removeAttribute("style");
+
+	}
+	
+</script>
+</html>
