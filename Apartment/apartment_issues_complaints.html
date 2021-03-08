@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>BUILDING</title>
+        <title>APARTMENT</title>
         <link rel="stylesheet" type="text/css" href="aside.css">
-        <link rel="stylesheet" type="text/css" href="building_issues_complaints.css">
+        <link rel="stylesheet" type="text/css" href="apartment_issues_complaints.css">
         
     </head>
     
@@ -14,11 +14,10 @@
                 <li>
                     <h3>Neighborhood</h3>
                 </li>
-                <li><a href="./building_services.html">Services</a></li>
-                <li class="active"><a href="./building_issues_complaints.html">Maintenance Issuses & Complaints</a></li>
-                <li><a href="./building_contact.html">Contact</a></li>
-                <li><a href="./building_apartment_members.html">Apartment Members</a></li>
-                <li><a href="./building_personal_information.html">Personal Information</a></li>
+                <li><a href="./apartment_services.html">Services</a></li>
+                <li class="active"><a href="./apartment_issues_complaints.html">Maintenance Issuses & Complaints</a></li>
+                <li><a href="./apartment_contact.html">Contact</a></li>
+                <li><a href="./apartment_personal_information.html">Personal Information</a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
         </aside>
@@ -31,7 +30,7 @@
                         <th>Title</th>
                         <th>Type</th>
                         <th>Date</th>
-                        <th>Name</th>
+                        <th>State</th>
                         <th>Action</th>
                     </tr>
                     <tr>
@@ -39,11 +38,23 @@
                         <td>Water</td>
                         <td>Maintenance Issuses</td>
                         <td>2021.3.6</td>
-                        <td>Minyi</td>
+                        <td>Handling</td>
                         <td>
                             <button class="button button_detail">Details</button>
                             <button class="button button_send">Reply</button>
-                            
+                            <button class="button button_modify">Finish</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="id">2</td>
+                        <td>Corridor Hygiene</td>
+                        <td>Complaints</td>
+                        <td>2021.3.1</td>
+                        <td>Close</td>
+                        <td>
+                            <button class="button button_detail">Details</button>
+                            <button class="button button_send">Reply</button>
+                            <button class="button button_modify disabled">Finish</button>
                         </td>
                     </tr>
                 </table>
