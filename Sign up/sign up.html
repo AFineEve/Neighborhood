@@ -13,8 +13,8 @@
                 <li><a href="../Homepage/homepage.html">Home</a></li>
                 <li><a>Dashboard</a></li>
                 <!-- <li><a href="#why_us">Why Us</a></li> -->
-                <li><a>Contact Us</a></li>
-                <li><a>Sign in</a></li>
+                <li><a href="../Homepage/contact_us.html">Contact Us</a></li>
+                <li><a href="../Login/login.html">Sign in</a></li>
                 <li><a href="../Sign up/sign up.html">Sign up</a></li>
             </ul>
         </div>
@@ -69,11 +69,25 @@
 						<td><input type="text" name="email"></td>
 					</tr>
 					<tr>
+						<td>Verification Code:</td>
+						<td>
+							<div id="container">
+								<input type="text" name="verification_code">
+								<input type="button" id="button_verify" onclick="alert('The verification code has been sent')" value="Verify">
+							</div>
+							
+						</td>
+						
+					</tr>
+					
+					<tr>
 						<td>Telephone:</td>
 						<td><input type="text" name="telephone"></td>
 					</tr>
 				</table>
 			</div>
+
+			<button class="button button_send">Sign up</button>
 
 		
 		</form>

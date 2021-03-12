@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>APARTMENT</title>
+        <link rel="stylesheet" type="text/css" href="aside.css">
+        <link rel="stylesheet" type="text/css" href="apartment_services.css">
+        
+    </head>
+    
+    
+    <body>
+        <aside class="box" id="test">
+            <ul>
+                <li>
+                    <h3>Neighborhood</h3>
+                </li>
+                <li class="active"><a href="./apartment_services.html">Services</a></li>
+                <li><a href="./apartment_issues_complaints.html">Maintenance Issuses & Complaints</a></li>
+                <li><a href="./apartment_contact.html">Contact</a></li>
+                <li><a href="./apartment_personal_information.html">Personal Information</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </aside>
+        <div class="content">
+            <h1 style="text-align: center;">Services</h1>
+            <div style="padding-left: 9%;">
+                <button class="button button_add">Order New Service</button>
+                <h2>Real-time Service Report</h2>
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <th>Id</th>
+                        <th>Services Name</th>
+                        <th>Current Usage</th>
+                        <th>Date</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>Water</td>
+                        <td>1024</td>
+                        <td>2021.3.6</td>
+                        <td>
+                            
+                            <button class="button button_detail">Details</button>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Gas</td>
+                        <td>256</td>
+                        <td>2021.3.6</td>
+                        <td>
+                            
+                            <button class="button button_detail">Details</button>
+                            
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div style="padding-left: 9%; margin-top: 7%;">
+                <h2>Monthly Service Report</h2>
+                <!-- <button class="button button_add">Add Private Service</button> -->
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <th>Id</th>
+                        <th>Month</th>
+                        <th>Bill</th>
+                        <th>State</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2021.2</td>
+                        <td>1024</td>
+                        <td>UNPAID</td>
+                        <td>
+                            
+                            <button class="button button_detail">Details</button>
+                            <button class="button button_modify">Pay</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>2021.1</td>
+                        <td>512</td>
+                        <td>PAID</td>
+                        <td>
+                        
+                            <button class="button button_detail">Details</button>
+                            <button class="button button_modify disabled">Pay</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            
+        </div>
+        
+    </body>
+</html>
