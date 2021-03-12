@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+    function addService() {
+        const target = document.getElementById('service_dialog');
+        if (target.style.display === 'none') {
+            target.style.display = 'block';
+        }
+    }
+    function closeDialog() {
+        const target = document.getElementById('service_dialog');
+        if (target.style.display === 'block') {
+            target.style.display = 'none';
+        }
+    }
+</script>
+<head>
+    <title>Subdivision</title>
+    <link rel="stylesheet" type="text/css" href="aside.css">
+    <link rel="stylesheet" type="text/css" href="serviceManagement.css">
+</head>
+<body>
+    <img src="../assets/login.jpg" alt="Login Figure"
+     class="login_figure">
+    <div class="sub_bkg">
+        <aside class="box" id="test">
+            <ul>
+                <li>
+                    <h3>Neighborhood</h3>
+                </li>
+                <li class="active"><a href="./serviceManagement.html">ServiceManagement</a></li>
+                <li><a href="./residents.html">Residents' information</a></li>
+                <li><a href="./contacts.html">Contacts</a></li>
+            </ul>
+        </aside>
+        <div class="content">
+            <div style="padding-left: 30px; margin-top: 10px">
+                <button class="button button_add" onclick="addService()">Add a Service</button>
+            </div>
+            <div class="table_bkg">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Building Number</th>
+                            <th>Service Name</th>
+                            <th>Unit price</th>
+                            <th>Current Usage</th>
+                            <th>Update Date</th>
+                            <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Water</td>
+                            <td>1.04$</td>
+                            <td>714t</td>
+                            <td>2021.3.6</td>
+                            <td>
+                                <button class="button button_send">Send Report</button>
+                                <button class="button button_detail">Delete</button>
+                                <button class="button button_modify">Pause</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div id="service_dialog" style="display: none">
+            <div class="dialog_text">
+                <span>Service Type</span>
+                <label>
+                    <select>
+                        <option>Water</option>
+                        <option>Electricity</option>
+                        <option>Gas</option>
+                    </select>
+                </label>
+            </div>
+            <div class="dialog_text">
+                <span>Service Supplier</span>
+                <label>
+                    <select>
+                        <option>Water Resource Bureau</option>
+                        <option>Electricity Resource Bureau</option>
+                        <option>Gas Resource Bureau</option>
+                    </select>
+                </label>
+            </div>
+            <div class="dialog_button_container">
+                <button onclick="closeDialog()">Register</button>
+                <button onclick="closeDialog()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

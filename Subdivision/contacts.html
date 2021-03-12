@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+    function startChat() {
+        const target = document.getElementById('chat_dialog');
+        if (target.style.display === 'none') {
+            target.style.display = 'block';
+        }
+    }
+    function closeDialog() {
+        const target = document.getElementById('chat_dialog');
+        if (target.style.display === 'block') {
+            target.style.display = 'none';
+        }
+    }
+</script>
+<head>
+    <title>Subdivision</title>
+    <link rel="stylesheet" type="text/css" href="aside.css">
+    <link rel="stylesheet" type="text/css" href="contacts.css">
+</head>
+<body>
+<img src="../assets/login.jpg" alt="Login Figure"
+     class="login_figure">
+<div class="sub_bkg">
+    <aside class="box" id="test">
+        <ul>
+            <li>
+                <h3>Neighborhood</h3>
+            </li>
+            <li><a href="./serviceManagement.html">ServiceManagement</a></li>
+            <li><a href="./residents.html">Residents' information</a></li>
+            <li class="active"><a href="./contacts.html">Contacts</a></li>
+        </ul>
+    </aside>
+    <div class="contact_table">
+        <div style="margin-top: 10px">
+            <button class="contact_super_user" onclick="startChat()">
+                Contact Super User
+            </button>
+        </div>
+        <div class="building_owner_bkg">
+            <p>Building Owner Table /</p>
+            <table>
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Building Number</th>
+                    <th>Building Address</th>
+                    <th>Tel</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Philip</td>
+                    <td>Male</td>
+                    <td>45</td>
+                    <td>No.10 XiTuCheng Road, HaiDian District, BeiJing</td>
+                    <td>18328345732</td>
+                    <td>philip@gmail.com</td>
+                    <td>
+                        <button class="chat" onclick="startChat()">Chat</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Emma</td>
+                    <td>Female</td>
+                    <td>30</td>
+                    <td>No.11 XiTuCheng Road, HaiDian District, BeiJing</td>
+                    <td>19528125732</td>
+                    <td>emma@gmail.com</td>
+                    <td>
+                        <button class="chat" onclick="startChat()">Chat</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="chat_dialog" style="display: none">
+        <div class="chat_title">
+            <span>Chat</span>
+            <span class="closeDialog" onclick="closeDialog()">x</span>
+        </div>
+        <div class="chat_content"></div>
+        <div class="chat_input_box">
+            <label>
+                <textarea></textarea>
+            </label>
+            <button>Send</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
