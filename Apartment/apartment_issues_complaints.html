@@ -9,24 +9,28 @@
     
     
     <body>
+        <div class="sub_bkg">
         <aside class="box" id="test">
             <ul>
                 <li>
                     <h3>Neighborhood</h3>
                 </li>
                 <li><a href="./apartment_services.html">Services</a></li>
-                <li class="active"><a href="./apartment_issues_complaints.html">Maintenance Issuses & Complaints</a></li>
+                <li class="active"><a href="./apartment_issues_complaints.html">Issuses & Complaints</a></li>
                 <li><a href="./apartment_contact.html">Contact</a></li>
-                <li><a href="./apartment_personal_information.html">Personal Information</a></li>
+                <li><a href="./apartment_personal_information.html">Profile</a></li>
                 <li><a href="#">Logout</a></li>
             </ul>
         </aside>
         <div class="content">
             <h1 style="text-align: center;">Maintenance Issuses & Complaints Tables</h1>
-            <div style="margin-top: 50px;">
+            <div style="padding-left: 5%; margin-top: 50px;">
+                <button class="button button_add" onclick="add()">Create New</button>
+            </div>
+            <div>
                 <table>
                     <tr>
-                        <th>Id</th>
+                        <th></th>
                         <th>Title</th>
                         <th>Type</th>
                         <th>Date</th>
@@ -40,8 +44,8 @@
                         <td>2021.3.6</td>
                         <td>Handling</td>
                         <td>
-                            <button class="button button_detail">Details</button>
-                            <button class="button button_send">Reply</button>
+                            <button class="button button_detail" onclick="OpenDetail()">Details</button>
+                            <button class="button button_send" onclick="reply()">Reply</button>
                             <button class="button button_modify">Finish</button>
                         </td>
                     </tr>
@@ -52,15 +56,98 @@
                         <td>2021.3.1</td>
                         <td>Close</td>
                         <td>
-                            <button class="button button_detail">Details</button>
-                            <button class="button button_send">Reply</button>
-                            <button class="button button_modify disabled">Finish</button>
+                            <button class="button button_detail" onclick="OpenDetail()">Details</button>
+                            <button class="button button_send disabled" disabled="disabled">Reply</button>
+                            <button class="button button_modify disabled" disabled="disabled">Finish</button>
                         </td>
                     </tr>
                 </table>
             </div>
             
         </div>
-
+        <div id="service_dialog_details" style="display: none">
+            <div class="dialog_text">
+                <span>You: </span>
+                <p>I ofgs asidha asduihwb asidhabw asbbf. I dasnj asdn xnub ncubeuv nseiubcs sidusi.</p>
+                <span>Building Owner: </span>
+                <p>I asifnian asifneu feibsbf sifhebi seifuh ifsuenuibf fsieufnin feifb. You fbasi hfsiebf isehf.</p>
+            </div>
+            <div class="dialog_button_container">
+                
+                <button onclick="CloseDetail()">Close</button>
+            </div>
+        </div>
+        <div id="new_dialog" style="display: none">
+            <div class="dialog_text">
+                <span>Type</span>
+                <label>
+                    <select>
+                        <option>Maintenance Issuses</option>
+                        <option>Complaints</option>
+                    </select>
+                </label>
+            </div>
+            <div class="dialog_text">
+                
+                <textarea style="width: 100%; height: 80px; margin-top: 20px;"></textarea>
+            </div>
+            <div class="dialog_button_container">
+                <button onclick="CloseNew()">Send</button>
+                <button onclick="CloseNew()">Cancel</button>
+            </div>
+        </div>
+        <div id="reply_dialog" style="display: none">
+            <div class="dialog_text">
+                <span>You: </span>
+                <p>I ofgs asidha asduihwb asidhabw asbbf. I dasnj asdn xnub ncubeuv nseiubcs sidusi.</p>
+                <span>Building Owner: </span>
+                <p>I asifnian asifneu feibsbf sifhebi seifuh ifsuenuibf fsieufnin feifb. You fbasi hfsiebf isehf.</p>
+                <textarea style="width: 100%; height: 80px; margin-top: 20px;"></textarea>
+            </div>
+            
+            <div class="dialog_button_container">
+                <button onclick="CloseReply()">Send</button>
+                <button onclick="CloseReply()">Cancel</button>
+            </div>
+        </div>
+    </div>
     </body>
+    <script>
+        function OpenDetail() {
+            const target = document.getElementById('service_dialog_details');
+            if (target.style.display === 'none') {
+                target.style.display = 'block';
+            }
+        }
+        function CloseDetail() {
+            const target = document.getElementById('service_dialog_details');
+            if (target.style.display === 'block') {
+                target.style.display = 'none';
+            }
+        }
+        function add() {
+            const target = document.getElementById('new_dialog');
+            if (target.style.display === 'none') {
+                target.style.display = 'block';
+            }
+        }
+        function CloseNew() {
+            const target = document.getElementById('new_dialog');
+            if (target.style.display === 'block') {
+                target.style.display = 'none';
+            }
+        }
+        function reply() {
+            const target = document.getElementById('reply_dialog');
+            if (target.style.display === 'none') {
+                target.style.display = 'block';
+            }
+        }
+        function CloseReply(){
+            const target = document.getElementById('reply_dialog');
+            if (target.style.display === 'block') {
+                target.style.display = 'none';
+            }
+        }
+    </script>
 </html>
