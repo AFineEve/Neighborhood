@@ -31,6 +31,9 @@ table {
 th {
     height: 50px;
 }
+.resident_table {
+    margin: 20px 30px 30px 256px;
+}
 .nav {
     position: absolute;
     top: 0;
@@ -79,26 +82,9 @@ th {
 .nav ul li a:active {
     color: white;
 }
-.resident_table {
-    margin: 20px 30px 30px 256px;
-}
-.chat {
-    border: none;
-    color: white;
-    padding: 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin: 2px;
-    cursor: pointer;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    background-color: #6ba2e0;
-}
-#chat_dialog {
-    width: 530px;
-    height: 530px;
+#info_dialog {
+    width: 480px;
+    height: 490px;
     position: absolute;
     top: 50px;
     left: 50%;
@@ -107,44 +93,32 @@ th {
     border: solid 1px #ebeef5;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
-    background-color: rgb(139, 203, 187);
+    background-color: white;
 }
-.chat_title {
+.info_title {
     height: 50px;
-    border-bottom: solid 1px white;
+    border-bottom: solid 1px #eeeeee;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
     font-size: 20px;
-    color: white;
+    color: black;
 }
-.closeDialog {
-    font-family: Arial,Verdana,Sans-serif,serif;
-    cursor: pointer;
-}
-.chat_content {
+.info_content {
     height: 350px;
-    background-color: white;
-    border-left: solid 1px rgb(139, 203, 187);
-    border-right: solid 1px rgb(139, 203, 187);
+    padding: 20px 0 10px 0;
 }
-.chat_input_box {
-    height: 125px;
-    border: solid 1px rgb(139, 203, 187);
-    background-color: white;
+.info_content p {
+    margin: 0 30px 8px 30px;
 }
-.chat_input_box textarea {
-    width: 95%;
-    height: 75px;
-    resize: none;
-    outline: none;
-    border: none;
-    padding: 5px;
+.info_box {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin: 0 auto;
 }
-.chat_input_box button {
-    float: right;
-    margin: 0 15px 0 0;
+.info_box button {
     display: inline-block;
     cursor: pointer;
     background-color: white;
@@ -156,20 +130,14 @@ th {
     width: 80px;
     height: 30px;
 }
-.dialog_button_container {
-    margin: 80px 0 20px 30px;
-    display: flex;
-    justify-content: space-around;
+.login_input {
+    display: inline-block;
+    padding: 0 5px;
+    width: 260px;
+    height: 25px;
+    line-height: 25px;
+    border: solid 1px #eeeeee;
+    color: rgb(31, 41, 46);
+    border-radius: 2px;
 }
-.dialog_button_container button {
-    background-color: white;
-    border: solid 1px #dcdfe6;
-    outline: none;
-    text-align: center;
-    padding: 12px 20px;
-    border-radius: 4px;
-    font-weight: 500;
-}
-button {
-    cursor: pointer;
-}
+

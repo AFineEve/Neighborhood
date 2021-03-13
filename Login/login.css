@@ -6,10 +6,13 @@ html, body {
 .login_figure {
     width: auto;
     height: 668px;
+    margin: 60px 0 0 0;
 }
 .nav {
-    position: relative;
+    position: absolute;
+    top: 0;
     z-index: 9;
+    width: 100%;
 }
 .nav_container {
     display: flex;
@@ -17,8 +20,9 @@ html, body {
     margin: 0 auto;
     width: 90%;
     height: 60px;
+    border-bottom: solid 1px white;
 }
-.nav_container a {
+.nav_container span {
     display: block;
     width: 200px;
     height: 60px;
@@ -28,8 +32,29 @@ html, body {
     color: black;
     font-size: 24px;
     font-weight: 500;
+}
+.nav ul {
+    margin: 0 30px 0 0;
+    height: 60px;
+    line-height: 60px;
+}
+.nav ul li {
+    list-style: none;
+    display: inline;
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: 200;
+}
+.nav ul li a {
+    color: black;
     cursor: pointer;
     text-decoration: none;
+}
+.nav ul li a:visited {
+    color: black;
+}
+.nav ul li a:active {
+    color: black;
 }
 .login_bkg {
     width: 100%;
