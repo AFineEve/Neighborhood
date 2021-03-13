@@ -1,10 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+<script>
+    function modifyInfo() {
+        const target = document.getElementById('info_dialog');
+        if (target.style.display === 'none') {
+            target.style.display = 'block';
+        }
+    }
+    function closeDialog() {
+        const target = document.getElementById('info_dialog');
+        if (target.style.display === 'block') {
+            target.style.display = 'none';
+        }
+    }
+</script>
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>SuperUser</title>
+    <link rel="stylesheet" type="text/css" href="aside.css">
+    <link rel="stylesheet" type="text/css" href="buildingOwner.css">
 </head>
 <body>
-
+<img src="../assets/login.jpg" alt="Login Figure"
+     class="login_figure">
+<div class="sub_bkg">
+    <aside class="box" id="test">
+        <ul>
+            <li>
+                <h3>Neighborhood</h3>
+            </li>
+            <li>
+                <a href="./subdivisionOwner.html">Subdivision Owner</a>
+            </li>
+            <li class="active"><a href="./buildingOwner.html">Building Owner</a></li>
+            <li><a href="./apartmentOwner.html">Apartment Owner</a></li>
+            <li><a href="./notification.html">Notification</a></li>
+        </ul>
+    </aside>
+    <div class="resident_table">
+        <table>
+            <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Building Name</th>
+                <th>Subdivision Name</th>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Tel</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>Zoe</td>
+                <td>No.1</td>
+                <td>Student Sub</td>
+                <td>300193199501041189</td>
+                <td>zoe@gmail.com</td>
+                <td>15328345732</td>
+                <td>
+                    <button class="chat" onclick="modifyInfo()">Modify</button>
+                    <button class="chat" onclick="modifyInfo()">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jimmy</td>
+                <td>No.19</td>
+                <td>Teacher Sub</td>
+                <td>300193199112041189</td>
+                <td>jimmy@gmail.com</td>
+                <td>15528125732</td>
+                <td>
+                    <button class="chat" onclick="modifyInfo()">Modify</button>
+                    <button class="chat" onclick="modifyInfo()">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="info_dialog" style="display: none">
+        <div class="info_title">
+            <span>Modify the information</span>
+        </div>
+        <div class="info_content">
+            <p><span>Name: </span><input type="text" value="zoe" class="login_input"></p>
+            <p><span>Role: </span>
+                <select>
+                    <option value="Subdivision_owner">Subdivision Owner</option>
+                    <option value="Building_owner" selected>Building Owner</option>
+                    <option value="Apartment_owner">Apartment Owner</option>
+                </select>
+            </p>
+            <p><span>Age: </span><input type="text" value="25" class="login_input"></p>
+            <p><span>Gender: </span><input type="text" value="Female" class="login_input"></p>
+            <p><span>ID: </span><input type="text" value="300381199502170441" class="login_input"></p>
+            <p><span>Email: </span><input type="text" value="zoe@gmail.com" class="login_input"></p>
+            <p><span>Tel: </span><input type="text" value="15234214392" class="login_input"></p>
+            <p><span>Building Name: </span><input type="text" value="No.1" class="login_input"></p>
+            <p><span>Building Address: </span>
+                <input type="text" value="No.11 XiTuCheng Road, HaiDian District, BeiJing" class="login_input">
+            </p>
+            <p><span>Subdivision Name: </span><input type="text" value="Student Sub" class="login_input"></p>
+        </div>
+        <div class="info_box">
+            <button onclick="closeDialog()">Confirm</button>
+            <button onclick="closeDialog()">Cancel</button>
+        </div>
+    </div>
+</div>
 </body>
 </html>

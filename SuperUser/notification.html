@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+    function modifyInfo() {
+        const target = document.getElementById('chat_dialog');
+        if (target.style.display === 'none') {
+            target.style.display = 'block';
+        }
+    }
+    function closeDialog() {
+        const target = document.getElementById('chat_dialog');
+        if (target.style.display === 'block') {
+            target.style.display = 'none';
+        }
+    }
+</script>
+<head>
+    <title>SuperUser</title>
+    <link rel="stylesheet" type="text/css" href="aside.css">
+    <link rel="stylesheet" type="text/css" href="notification.css">
+</head>
+<body>
+<img src="../assets/login.jpg" alt="Login Figure"
+     class="login_figure">
+<div class="sub_bkg">
+    <aside class="box" id="test">
+        <ul>
+            <li>
+                <h3>Neighborhood</h3>
+            </li>
+            <li>
+                <a href="./subdivisionOwner.html">Subdivision Owner</a>
+            </li>
+            <li><a href="./buildingOwner.html">Building Owner</a></li>
+            <li><a href="./apartmentOwner.html">Apartment Owner</a></li>
+            <li class="active"><a href="./notification.html">Notification</a></li>
+        </ul>
+    </aside>
+    <div class="resident_table">
+        <table>
+            <thead>
+            <tr>
+                <th></th>
+                <th>Inbox</th>
+                <th>From</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>Furniture repair</td>
+                <td>Lily</td>
+                <td>Apartment Owner</td>
+                <td>
+                    <button class="chat" onclick="modifyInfo()">Reply</button>
+                    <button class="chat" onclick="modifyInfo()">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Lori</td>
+                <td>Rename subdivision</td>
+                <td>Subdivision Owner</td>
+                <td>
+                    <button class="chat" onclick="modifyInfo()">Reply</button>
+                    <button class="chat" onclick="modifyInfo()">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="chat_dialog" style="display: none">
+        <div class="chat_title">
+            <span>Chat</span>
+            <span class="closeDialog" onclick="closeDialog()">x</span>
+        </div>
+        <div class="chat_content"></div>
+        <div class="chat_input_box">
+            <label>
+                <textarea></textarea>
+            </label>
+            <button>Send</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <script>
-    function addService() {
-        const target = document.getElementById('service_dialog');
+    function modifyInfo() {
+        const target = document.getElementById('info_dialog');
         if (target.style.display === 'none') {
             target.style.display = 'block';
         }
     }
     function closeDialog() {
-        const target = document.getElementById('service_dialog');
+        const target = document.getElementById('info_dialog');
         if (target.style.display === 'block') {
             target.style.display = 'none';
         }
@@ -28,68 +28,83 @@
             <li>
                 <h3>Neighborhood</h3>
             </li>
-            <li class="active"><a href="./serviceManagement.html">ServiceManagement</a></li>
-            <li><a href="./residents.html">Residents' information</a></li>
-            <li><a href="./contacts.html">Contacts</a></li>
+            <li class="active">
+                <a href="./subdivisionOwner.html">Subdivision Owner</a>
+            </li>
+            <li><a href="./buildingOwner.html">Building Owner</a></li>
+            <li><a href="./apartmentOwner.html">Apartment Owner</a></li>
+            <li><a href="./notification.html">Notification</a></li>
         </ul>
     </aside>
-    <div class="content">
-        <div style="padding-left: 30px; margin-top: 10px">
-            <button class="button button_add" onclick="addService()">Add a Service</button>
-        </div>
-        <div class="table_bkg">
-            <table>
-                <thead>
-                <tr>
-                    <th>Building Number</th>
-                    <th>Service Name</th>
-                    <th>Unit price</th>
-                    <th>Current Usage</th>
-                    <th>Update Date</th>
-                    <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Water</td>
-                    <td>1.04$</td>
-                    <td>714t</td>
-                    <td>2021.3.6</td>
-                    <td>
-                        <button class="button button_send">Send Report</button>
-                        <button class="button button_detail">Delete</button>
-                        <button class="button button_modify">Pause</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-
+    <div class="resident_table">
+        <table>
+            <thead>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Subdivision Name</th>
+                <th>Subdivision Address</th>
+                <th>ID</th>
+                <th>Email</th>
+                <th>Tel</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>Lori</td>
+                <td>Student Sub</td>
+                <td>No.10 XiTuCheng Road, HaiDian District, BeiJing</td>
+                <td>300193199501041189</td>
+                <td>lori@gmail.com</td>
+                <td>15328345732</td>
+                <td>
+                    <button class="chat" onclick="modifyInfo()">Modify</button>
+                    <button class="chat" onclick="modifyInfo()">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Richard</td>
+                <td>Teacher Sub</td>
+                <td>No.14 XiTuCheng Road, HaiDian District, BeiJing</td>
+                <td>300193199112041189</td>
+                <td>richard@gmail.com</td>
+                <td>15528125732</td>
+                <td>
+                    <button class="chat" onclick="modifyInfo()">Modify</button>
+                    <button class="chat" onclick="modifyInfo()">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
-    <div id="service_dialog" style="display: none">
-        <div class="dialog_text">
-            <span>Service Type</span>
-            <label>
-                <select>
-                    <option>Water</option>
-                    <option>Electricity</option>
-                    <option>Gas</option>
-                </select>
-            </label>
+    <div id="info_dialog" style="display: none">
+        <div class="info_title">
+            <span>Modify the information</span>
         </div>
-        <div class="dialog_text">
-            <span>Service Supplier</span>
-            <label>
+        <div class="info_content">
+            <p><span>Name: </span><input type="text" value="Lori" class="login_input"></p>
+            <p><span>Role: </span>
                 <select>
-                    <option>Water Resource Bureau</option>
-                    <option>Electricity Resource Bureau</option>
-                    <option>Gas Resource Bureau</option>
+                    <option value="Subdivision_owner" selected>Subdivision Owner</option>
+                    <option value="Building_owner">Building Owner</option>
+                    <option value="Apartment_owner">Apartment Owner</option>
                 </select>
-            </label>
+            </p>
+            <p><span>Age: </span><input type="text" value="25" class="login_input"></p>
+            <p><span>Gender: </span><input type="text" value="Female" class="login_input"></p>
+            <p><span>ID: </span><input type="text" value="300381199502170441" class="login_input"></p>
+            <p><span>Email: </span><input type="text" value="lori@gmail.com" class="login_input"></p>
+            <p><span>Tel: </span><input type="text" value="15234214392" class="login_input"></p>
+            <p><span>Subdivision Name: </span><input type="text" value="Student Sub" class="login_input"></p>
+            <p><span>Subdivision Address: </span>
+                <input type="text" value="No.1 XiTuCheng Road, HaiDian District, BeiJing" class="login_input">
+            </p>
         </div>
-        <div class="dialog_button_container">
-            <button onclick="closeDialog()">Register</button>
+        <div class="info_box">
+            <button onclick="closeDialog()">Confirm</button>
             <button onclick="closeDialog()">Cancel</button>
         </div>
     </div>

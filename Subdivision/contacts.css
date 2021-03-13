@@ -126,20 +126,6 @@ th {
     width: 80px;
     height: 30px;
 }
-.dialog_button_container {
-    margin: 80px 0 20px 30px;
-    display: flex;
-    justify-content: space-around;
-}
-.dialog_button_container button {
-    background-color: white;
-    border: solid 1px #dcdfe6;
-    outline: none;
-    text-align: center;
-    padding: 12px 20px;
-    border-radius: 4px;
-    font-weight: 500;
-}
 button {
     cursor: pointer;
 }

@@ -48,9 +48,9 @@ th {
     transition-duration: 0.4s;
     background-color: #6ba2e0;
 }
-#info_dialog {
-    width: 480px;
-    height: 490px;
+#chat_dialog {
+    width: 530px;
+    height: 530px;
     position: absolute;
     top: 50px;
     left: 50%;
@@ -59,32 +59,44 @@ th {
     border: solid 1px #ebeef5;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
-    background-color: white;
+    background-color: rgb(139, 203, 187);
 }
-.info_title {
+.chat_title {
     height: 50px;
-    border-bottom: solid 1px #eeeeee;
+    border-bottom: solid 1px white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 20px;
     font-size: 20px;
-    color: black;
+    color: white;
 }
-.info_content {
+.closeDialog {
+    font-family: Arial,Verdana,Sans-serif,serif;
+    cursor: pointer;
+}
+.chat_content {
     height: 350px;
-    padding: 20px 0 10px 0;
+    background-color: white;
+    border-left: solid 1px rgb(139, 203, 187);
+    border-right: solid 1px rgb(139, 203, 187);
 }
-.info_content p {
-    margin: 0 30px 8px 30px;
+.chat_input_box {
+    height: 125px;
+    border: solid 1px rgb(139, 203, 187);
+    background-color: white;
 }
-.info_box {
-    display: flex;
-    justify-content: space-around;
-    width: 80%;
-    margin: 0 auto;
+.chat_input_box textarea {
+    width: 95%;
+    height: 75px;
+    resize: none;
+    outline: none;
+    border: none;
+    padding: 5px;
 }
-.info_box button {
+.chat_input_box button {
+    float: right;
+    margin: 0 15px 0 0;
     display: inline-block;
     cursor: pointer;
     background-color: white;
