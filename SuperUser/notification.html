@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <script>
-    function startChat() {
+    function modifyInfo() {
         const target = document.getElementById('chat_dialog');
         if (target.style.display === 'none') {
             target.style.display = 'block';
@@ -15,9 +15,9 @@
     }
 </script>
 <head>
-    <title>Subdivision</title>
+    <title>SuperUser</title>
     <link rel="stylesheet" type="text/css" href="aside.css">
-    <link rel="stylesheet" type="text/css" href="residents.css">
+    <link rel="stylesheet" type="text/css" href="notification.css">
 </head>
 <body>
 <nav class="nav">
@@ -41,57 +41,46 @@
             <li>
                 <h3>Neighborhood</h3>
             </li>
-            <li><a href="./serviceManagement.html">ServiceManagement</a></li>
-            <li class="active"><a href="./residents.html">Residents' information</a></li>
-            <li><a href="./contacts.html">Contacts</a></li>
-            <li><a href="./profile.html">Profile</a></li>
+            <li>
+                <a href="./subdivisionOwner.html">Subdivision Owner</a>
+            </li>
+            <li><a href="./buildingOwner.html">Building Owner</a></li>
+            <li><a href="./apartmentOwner.html">Apartment Owner</a></li>
+            <li class="active"><a href="./notification.html">Notification</a></li>
         </ul>
     </aside>
     <div class="resident_table">
         <table>
             <thead>
-                <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Building Num</th>
-                    <th>Apartment Num</th>
-                    <th>Gender</th>
-                    <th>Age</th>
-                    <th>ID</th>
-                    <th>Email</th>
-                    <th>Tel</th>
-                    <th>Action</th>
-                </tr>
+            <tr>
+                <th></th>
+                <th>Inbox</th>
+                <th>From</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Lori</td>
-                    <td>No.1</td>
-                    <td>1025</td>
-                    <td>Female</td>
-                    <td>25</td>
-                    <td>300193199501041189</td>
-                    <td>lori@gmail.com</td>
-                    <td>15328345732</td>
-                    <td>
-                        <button class="chat" onclick="startChat()">Chat</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Richard</td>
-                    <td>No.19</td>
-                    <td>1019</td>
-                    <td>Male</td>
-                    <td>32</td>
-                    <td>300193199112041189</td>
-                    <td>richard@gmail.com</td>
-                    <td>15528125732</td>
-                    <td>
-                        <button class="chat" onclick="startChat()">Chat</button>
-                    </td>
-                </tr>
+            <tr>
+                <td>1</td>
+                <td>Furniture repair</td>
+                <td>Lily</td>
+                <td>Apartment Owner</td>
+                <td>
+                    <button class="chat" onclick="modifyInfo()">Reply</button>
+                    <button class="chat" onclick="modifyInfo()">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Lori</td>
+                <td>Rename subdivision</td>
+                <td>Subdivision Owner</td>
+                <td>
+                    <button class="chat" onclick="modifyInfo()">Reply</button>
+                    <button class="chat" onclick="modifyInfo()">Delete</button>
+                </td>
+            </tr>
             </tbody>
         </table>
     </div>

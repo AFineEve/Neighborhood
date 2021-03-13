@@ -31,6 +31,9 @@ table {
 th {
     height: 50px;
 }
+.resident_table {
+    margin: 20px 30px 30px 256px;
+}
 .nav {
     position: absolute;
     top: 0;
@@ -79,26 +82,9 @@ th {
 .nav ul li a:active {
     color: white;
 }
-.resident_table {
-    margin: 20px 30px 30px 256px;
-}
-.chat {
-    border: none;
-    color: white;
-    padding: 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 12px;
-    margin: 2px;
-    cursor: pointer;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    background-color: #6ba2e0;
-}
 #info_dialog {
     width: 480px;
-    height: 520px;
+    height: 490px;
     position: absolute;
     top: 50px;
     left: 50%;
@@ -120,7 +106,7 @@ th {
     color: black;
 }
 .info_content {
-    height: 380px;
+    height: 350px;
     padding: 20px 0 10px 0;
 }
 .info_content p {
@@ -144,16 +130,14 @@ th {
     width: 80px;
     height: 30px;
 }
-button {
-    cursor: pointer;
-}
 .login_input {
     display: inline-block;
     padding: 0 5px;
-    width: 250px;
+    width: 260px;
     height: 25px;
     line-height: 25px;
     border: solid 1px #eeeeee;
     color: rgb(31, 41, 46);
     border-radius: 2px;
 }
+

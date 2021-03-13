@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+    function startChat() {
+        const target = document.getElementById('chat_dialog');
+        if (target.style.display === 'none') {
+            target.style.display = 'block';
+        }
+    }
+    function closeDialog() {
+        const target = document.getElementById('chat_dialog');
+        if (target.style.display === 'block') {
+            target.style.display = 'none';
+        }
+    }
+</script>
+<head>
+    <title>Subdivision</title>
+    <link rel="stylesheet" type="text/css" href="aside.css">
+    <link rel="stylesheet" type="text/css" href="profile.css">
+</head>
+<body>
+<nav class="nav">
+    <div class="nav_container">
+        <span>NEIGHBORHOOD</span>
+        <ul>
+            <li><a href="../Homepage/homepage.html">Home</a></li>
+            <li><a>Dashboard</a></li>
+            <li><a href="../Homepage/homepage.html">Why Us</a></li>
+            <li><a href="../Homepage/contact_us.html">Contact Us</a></li>
+            <li><a href="../Login/login.html">Sign in</a></li>
+            <li><a href="../Sign up/sign up.html">Sign up</a></li>
+        </ul>
+    </div>
+</nav>
+<img src="../assets/login.jpg" alt="Login Figure"
+     class="login_figure">
+<div class="sub_bkg">
+    <aside class="box" id="test">
+        <ul>
+            <li>
+                <h3>Neighborhood</h3>
+            </li>
+            <li><a href="./serviceManagement.html">ServiceManagement</a></li>
+            <li><a href="./residents.html">Residents' information</a></li>
+            <li><a href="./contacts.html">Contacts</a></li>
+            <li class="active"><a href="./profile.html">Profile</a></li>
+        </ul>
+    </aside>
+    <div class="resident_table">
+        <div class="info_content">
+            <p><span>Name: </span><input type="text" value="zoe" class="login_input"></p>
+            <p><span>Age: </span><input type="text" value="25" class="login_input"></p>
+            <p><span>Gender: </span><input type="text" value="Female" class="login_input"></p>
+            <p><span>ID: </span><input type="text" value="300381199502170441" class="login_input"></p>
+            <p><span>Email: </span><input type="text" value="zoe@gmail.com" class="login_input"></p>
+            <p><span>Tel: </span><input type="text" value="15234214392" class="login_input"></p>
+            <p><span>Subdivision Name: </span><input type="text" value="Student Sub" class="login_input"></p>
+            <p><span>Subdivision Address: </span>
+                <input type="text" value="No.1 XiTuCheng Road, HaiDian District, BeiJing" class="login_input">
+            </p>
+        </div>
+        <div class="info_box">
+            <button onclick="closeDialog()">Confirm</button>
+            <button onclick="closeDialog()">Cancel</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
