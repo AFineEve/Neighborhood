@@ -164,13 +164,3 @@ th {
 button {
     cursor: pointer;
 }
-.login_input {
-    display: inline-block;
-    padding: 0 5px;
-    width: 260px;
-    height: 25px;
-    line-height: 25px;
-    border: solid 1px #eeeeee;
-    color: rgb(31, 41, 46);
-    border-radius: 2px;
-}
