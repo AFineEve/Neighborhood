@@ -46,6 +46,81 @@ table td{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
+#chat_dialog {
+    width: 530px;
+    height: 530px;
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    margin-left: -250px;
+    border-radius: 5px;
+    border: solid 1px #ebeef5;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    background-color: rgb(139, 203, 187);
+}
+.chat_title {
+    height: 50px;
+    border-bottom: solid 1px white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 20px;
+    color: white;
+}
+.closeDialog {
+    font-family: Arial,Verdana,Sans-serif,serif;
+    cursor: pointer;
+}
+.chat_content {
+    height: 350px;
+    background-color: white;
+    border-left: solid 1px rgb(139, 203, 187);
+    border-right: solid 1px rgb(139, 203, 187);
+}
+.chat_input_box {
+    height: 125px;
+    border: solid 1px rgb(139, 203, 187);
+    background-color: white;
+}
+.chat_input_box textarea {
+    width: 95%;
+    height: 75px;
+    resize: none;
+    outline: none;
+    border: none;
+    padding: 5px;
+}
+.chat_input_box button {
+    float: right;
+    margin: 0 15px 0 0;
+    display: inline-block;
+    cursor: pointer;
+    background-color: white;
+    border: solid 1px #dcdfe6;
+    color: #606266;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    width: 80px;
+    height: 30px;
+}
+.dialog_button_container {
+    margin: 80px 0 20px 30px;
+    display: flex;
+    justify-content: space-around;
+}
+.dialog_button_container button {
+    background-color: white;
+    border: solid 1px #dcdfe6;
+    outline: none;
+    text-align: center;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
 
 
 

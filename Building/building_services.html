@@ -9,48 +9,136 @@
     
     
     <body>
+        <nav class="nav">
+            <div class="nav_container">
+                <span>NEIGHBORHOOD</span>
+                <ul>
+                    <li><a href="../Homepage/homepage.html">Home</a></li>
+                    <li><a>Dashboard</a></li>
+                    <li><a href="../Homepage/homepage.html">Why Us</a></li>
+                    <li><a href="../Homepage/contact_us.html">Contact Us</a></li>
+                    <li><a href="">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="sub_bkg">
         <aside class="box" id="test">
             <ul>
                 <li>
                     <h3>Neighborhood</h3>
                 </li>
                 <li class="active"><a href="./building_services.html">Services</a></li>
-                <li><a href="./building_issues_complaints.html">Maintenance Issuses & Complaints</a></li>
+                <li><a href="./building_issues_complaints.html">Issuses & Complaints</a></li>
                 <li><a href="./building_contact.html">Contact</a></li>
                 <li><a href="./building_apartment_members.html">Apartment Members</a></li>
-                <li><a href="./building_personal_information.html">Personal Information</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="./building_personal_information.html">Profile</a></li>
             </ul>
         </aside>
         <div class="content">
             <h1 style="text-align: center;">Services Table</h1>
-            <div style="padding-left: 9%;">
+            <!-- <div style="padding-left: 9%;">
                 <button class="button button_add">Add Service</button>
-            </div>
-            <div>
+            </div> -->
+            <div style="margin-top: 50px;">
                 <table>
                     <tr>
-                        <th>Id</th>
-                        <th>Services Name</th>
-                        <th>Current Usage</th>
-                        <th>Date</th>
-                        <th>Action</th>
+                        <th></th>
+                        <th>Month</th>
+                        <th>Bill</th>
+                        <th>State</th>
+                        <th id="action">Action</th>
                     </tr>
                     <tr>
                         <td>1</td>
-                        <td>Water</td>
+                        <td>2021.3</td>
                         <td>1024</td>
-                        <td>2021.3.6</td>
+                        <td>Not Send</td>
                         <td>
-                            <button class="button button_send">Send Report</button>
-                            <button class="button button_detail">Details</button>
-                            <button class="button button_modify">Modify</button>
+                            <button class="button button_send" onclick="sendService()">Send Report</button>
+                            <button class="button button_detail" onclick="OpenDetail()">Details</button>
+                            
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>2021.2</td>
+                        <td>1024</td>
+                        <td>Sended</td>
+                        <td>
+                            <button class="button button_send" onclick="sendService()">Send Report</button>
+                            <button class="button button_detail" onclick="OpenDetail()">Details</button>
+                            
                         </td>
                     </tr>
                 </table>
             </div>
             
         </div>
+        <div id="service_dialog_details" style="display: none">
+            <div class="dialog_text">
+                <table style="color: white;">
+                    <tr>
+                        <th>Service Name</th>
+                        <th>Total Usage</th>
+                        <th>Bill</th>
+                    </tr>
+                    <tr>
+                        <td>Water</td>
+                        <td>1024</td>
+                        <td>512</td>
+                    </tr>
+                    <tr>
+                        <td>Gas</td>
+                        <td>1024</td>
+                        <td>512</td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Total:1024</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="dialog_button_container">
+                
+                <button onclick="CloseDetail()">Close</button>
+            </div>
+        </div>
+        <div id="send_service_dialog" style="display: none">
+            
+            <div class="dialog_button_container">
+                <button onclick="closeDialog()">Send</button>
+                <button onclick="closeDialog()">Cancel</button>
+            </div>
+        </div>
+
+        </div>
         
     </body>
+    <script>
+        function OpenDetail() {
+            const target = document.getElementById('service_dialog_details');
+            if (target.style.display === 'none') {
+                target.style.display = 'block';
+            }
+        }
+        function CloseDetail() {
+            const target = document.getElementById('service_dialog_details');
+            if (target.style.display === 'block') {
+                target.style.display = 'none';
+            }
+        }
+        function sendService() {
+            const target = document.getElementById('send_service_dialog');
+            if (target.style.display === 'none') {
+                target.style.display = 'block';
+            }
+        }
+        function closeDialog() {
+            const target = document.getElementById('send_service_dialog');
+            if (target.style.display === 'block') {
+                target.style.display = 'none';
+            }
+        }
+    </script>
 </html>

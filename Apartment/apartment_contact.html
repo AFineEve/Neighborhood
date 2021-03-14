@@ -9,16 +9,28 @@
     
     
     <body>
+        <nav class="nav">
+            <div class="nav_container">
+                <span>NEIGHBORHOOD</span>
+                <ul>
+                    <li><a href="../Homepage/homepage.html">Home</a></li>
+                    <li><a>Dashboard</a></li>
+                    <li><a href="../Homepage/homepage.html">Why Us</a></li>
+                    <li><a href="../Homepage/contact_us.html">Contact Us</a></li>
+                    <li><a href="">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="sub_bkg">
         <aside class="box" id="test">
             <ul>
                 <li>
                     <h3>Neighborhood</h3>
                 </li>
                 <li><a href="./apartment_services.html">Services</a></li>
-                <li><a href="./apartment_issues_complaints.html">Maintenance Issuses & Complaints</a></li>
+                <li><a href="./apartment_issues_complaints.html">Issuses & Complaints</a></li>
                 <li class="active"><a href="./apartment_contact.html">Contact</a></li>
-                <li><a href="./apartment_personal_information.html">Personal Information</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="./apartment_personal_information.html">Profile</a></li>
             </ul>
         </aside>
 
@@ -41,7 +53,7 @@
                         <td>123@123.com</td>
                         <td>18012345612</td>
                         <td>
-                            <button class="button button_send">Chat</button>
+                            <button class="button button_send" onclick="startChat()">Chat</button>
                         </td>
                     </tr>
                     <tr>
@@ -51,13 +63,41 @@
                         <td>321@123.com</td>
                         <td>18012138111</td>
                         <td>
-                            <button class="button button_send">Chat</button>
+                            <button class="button button_send" onclick="startChat()">Chat</button>
                         </td>
                     </tr>
                 </table>
             </div>
             
         </div>
-        
+        <div id="chat_dialog" style="display: none">
+            <div class="chat_title">
+                <span>Chat</span>
+                <span class="closeDialog" onclick="closeDialog()">x</span>
+            </div>
+            <div class="chat_content"></div>
+            <div class="chat_input_box">
+                <label>
+                    <textarea></textarea>
+                </label>
+                <button>Send</button>
+            </div>
+        </div>
+    </div>
+    
     </body>
+    <script>
+        function startChat() {
+            const target = document.getElementById('chat_dialog');
+            if (target.style.display === 'none') {
+                target.style.display = 'block';
+            }
+        }
+        function closeDialog() {
+            const target = document.getElementById('chat_dialog');
+            if (target.style.display === 'block') {
+                target.style.display = 'none';
+            }
+        }
+    </script>
 </html>

@@ -44,17 +44,28 @@
                     User Type
                 </label>
                 <label>
-                    <select class="login_input">
+                    <select class="login_input" id="role">
                         <option value="SubdivisionOwner">Subdivision Owner</option>
                         <option value="BuildingOwner">Building Owner</option>
                         <option value="ApartmentOwner">Apartment Owner</option>
                     </select>
                 </label>
-                <button class="login_submit" type="submit">
+                <button class="login_submit" type="submit" onclick="login();return false;">
                     Submit
                 </button>
             </form>
         </div>
+       
     </div>
 </body>
+<script>
+    function login(){
+        var role = document.getElementById("role");
+        var index = role.selectedIndex; 
+        var value = role.options[index].value;
+        if(value == "SubdivisionOwner") {window.location.href="../Subdivision/serviceManagement.html";}
+        if(value == "BuildingOwner") {window.location.href="../Building/building_services.html";}
+        if(value == "ApartmentOwner") {window.location.href="../Apartment/apartment_services.html";}
+    }
+</script>
 </html>

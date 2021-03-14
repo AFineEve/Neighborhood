@@ -4,7 +4,11 @@ table {
     
 }
 table td{
-    width: 280px;
+    width: 260px;
+}
+
+table #action{
+    width: 350px;
 }
 .button {
     
@@ -41,6 +45,42 @@ table td{
 
 .button:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#service_dialog_details, #send_service_dialog{
+    width: 500px;
+    height: 300px;
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    margin-left: -250px;
+    padding: 20px;
+    border-radius: 8px;
+    border: solid 1px #ebeef5;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    background-color: rgb(139, 203, 187);
+}
+.dialog_text {
+    margin: 30px 0 30px 30px;
+}
+.dialog_text span {
+    color: white;
+    font-size: 20px;
+}
+.dialog_button_container {
+    margin: 80px 0 20px 30px;
+    display: flex;
+    justify-content: space-around;
+}
+.dialog_button_container button {
+    background-color: white;
+    border: solid 1px #dcdfe6;
+    outline: none;
+    text-align: center;
+    padding: 12px 20px;
+    border-radius: 4px;
+    font-weight: 500;
 }
 
 
