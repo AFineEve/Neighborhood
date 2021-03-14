@@ -9,6 +9,18 @@
     
     
     <body>
+        <nav class="nav">
+            <div class="nav_container">
+                <span>NEIGHBORHOOD</span>
+                <ul>
+                    <li><a href="../Homepage/homepage.html">Home</a></li>
+                    <li><a>Dashboard</a></li>
+                    <li><a href="../Homepage/homepage.html">Why Us</a></li>
+                    <li><a href="../Homepage/contact_us.html">Contact Us</a></li>
+                    <li><a href="">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
         <div class="sub_bkg">
         <aside class="box" id="test">
             <ul>
@@ -19,15 +31,14 @@
                 <li><a href="./building_issues_complaints.html">Issuses & Complaints</a></li>
                 <li><a href="./building_contact.html">Contact</a></li>
                 <li class="active"><a href="./building_apartment_members.html">Apartment Members</a></li>
-                <li><a href="./building_personal_information.html">Personal Information</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="./building_personal_information.html">Profile</a></li>
             </ul>
         </aside>
 
         <div class="content">
             <h1 style="text-align: center;">Apartment Members</h1>
             <div style="margin-top: 50px;">
-                <table style="margin-left: 10%;">
+                <table style="margin-left: 6%;">
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
@@ -39,7 +50,7 @@
                         <td>Minyi</td>
                         <td>102</td>
                         <td>
-                            <button class="button button_detail">Detail</button>
+                            <button class="button button_detail" onclick="OpenDetail()">Detail</button>
                             <button class="button button_modify">Delete</button>
                         </td>
                     </tr>
@@ -48,14 +59,69 @@
                         <td>Wenwei</td>
                         <td>201</td>
                         <td>
-                            <button class="button button_detail">Detail</button>
+                            <button class="button button_detail" onclick="OpenDetail()">Detail</button>
                             <button class="button button_modify">Delete</button>
                         </td>
                     </tr>
                 </table>
             </div>
-            
+            <div id="user_details" style="display: none">
+                <div class="dialog_text">
+                    <table style="margin-top: 50px;">
+                        <tr>
+                            <td>Name:</td>
+                            <td>Haowei</td>
+                        </tr>
+                        <tr>
+                            <td>Gender:</td>
+                            <td>Male</td>
+                        </tr>
+                        <tr>
+                            <td>Age:</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td>916@123.com</td>
+                        </tr>
+                        <tr>
+                            <td>Telephone:</td>
+                            <td>18038324111</td>
+                        </tr>
+                        <tr>
+                            <td>Role:</td>
+                            <td>Building Manager</td>
+                        </tr>
+                        <tr>
+                            <td>Subdivision:</td>
+                            <td>A</td>
+                        </tr>
+                        <tr>
+                            <td>Building:</td>
+                            <td>1</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="dialog_button_container">
+                    
+                    <button onclick="CloseDetail()">Close</button>
+                </div>
+            </div>
         </div>
         </div>
     </body>
+    <script>
+        function OpenDetail() {
+            const target = document.getElementById('user_details');
+            if (target.style.display === 'none') {
+                target.style.display = 'block';
+            }
+        }
+        function CloseDetail() {
+            const target = document.getElementById('user_details');
+            if (target.style.display === 'block') {
+                target.style.display = 'none';
+            }
+        }
+    </script>
 </html>
