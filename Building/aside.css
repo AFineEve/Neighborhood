@@ -1,4 +1,8 @@
-
+/**
+** Minyi Lu 1001888591
+** Anguo Shangguan  1001888799
+** Ziwei Liu 1001888811
+**/
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +10,7 @@
 
 body {
     max-width: 1920px;
-    
+
     background: url("../assets/login.jpg");
     background-repeat: no-repeat;
     background-size: auto;
