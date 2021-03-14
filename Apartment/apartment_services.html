@@ -4,10 +4,10 @@
         <title>APARTMENT</title>
         <link rel="stylesheet" type="text/css" href="aside.css">
         <link rel="stylesheet" type="text/css" href="apartment_services.css">
-        
+
     </head>
-    
-    
+
+
     <body>
         <nav class="nav">
             <div class="nav_container">
@@ -17,12 +17,13 @@
                     <li><a>Dashboard</a></li>
                     <li><a href="../Homepage/homepage.html">Why Us</a></li>
                     <li><a href="../Homepage/contact_us.html">Contact Us</a></li>
+                    <li><a href="http://zxl8811.uta.cloud/">Blog</a></li>
                     <li><a href="">Logout</a></li>
                 </ul>
             </div>
         </nav>
     <div class="sub_bkg">
-            
+
         <aside class="box" id="test">
             <ul>
                 <li>
@@ -48,7 +49,7 @@
                         <th>Current Usage</th>
                         <th>Current Bill</th>
                         <th>Date</th>
-                        
+
                     </tr>
                     <tr>
                         <td>1</td>
@@ -57,9 +58,9 @@
                         <td>512</td>
                         <td>2021.3.6</td>
                         <!-- <td>
-                            
+
                             <button class="button button_detail">Details</button>
-                            
+
                         </td> -->
                     </tr>
                     <tr>
@@ -69,9 +70,9 @@
                         <td>128</td>
                         <td>2021.3.6</td>
                         <!-- <td>
-                            
+
                             <button class="button button_detail">Details</button>
-                            
+
                         </td> -->
                     </tr>
                 </table>
@@ -95,7 +96,7 @@
                         <td>1024</td>
                         <td>UNPAID</td>
                         <td>
-                            
+
                             <button class="button button_detail" onclick="OpenDetail()">Details</button>
                             <button class="button button_modify">Pay</button>
                         </td>
@@ -106,14 +107,14 @@
                         <td>512</td>
                         <td>PAID</td>
                         <td>
-                        
+
                             <button class="button button_detail" onclick="OpenDetail()">Details</button>
                             <button class="button button_modify disabled" disabled="disabled">Pay</button>
                         </td>
                     </tr>
                 </table>
             </div>
-            
+
         </div>
         <div id="add_service_dialog" style="display: none">
             <div class="dialog_text">
@@ -167,13 +168,13 @@
                 </table>
             </div>
             <div class="dialog_button_container">
-                
+
                 <button onclick="CloseDetail()">Close</button>
             </div>
         </div>
-        
+
     </div>
-        
+
     </body>
     <script>
         function addService() {
