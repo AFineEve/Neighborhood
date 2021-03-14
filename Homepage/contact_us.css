@@ -1,7 +1,7 @@
 /**
-** Minyi Lu 1001888591
-** Anguo Shangguan  1001888799
-** Ziwei Liu 1001888811
+** Lu Minyi 1001888591
+** Shangguan Anguo 1001888799
+** Liu Ziwei 1001888811
 **/
 body {
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
@@ -45,7 +45,6 @@ body {
     list-style: none;
     display: inline;
     margin-left: 20px;
-    color: black;
     font-size: 18px;
     font-weight: 200;
 }
@@ -54,12 +53,12 @@ body {
     text-decoration: none;
     color: black;
 }
-/* .nav ul li a:visited {
-    color: white;
+.nav ul li a:visited {
+    color: black;
 }
 .nav ul li a:active {
-    color: white;
-} */
+    color: black;
+}
 .background {
     position: relative;
     z-index: 1;
@@ -128,7 +127,6 @@ input[type=text], textarea {
 }
 
 form {
-
     margin-left: 16.5%;
     width: 66%;
 }

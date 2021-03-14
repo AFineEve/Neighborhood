@@ -1,7 +1,7 @@
 /**
-** Minyi Lu 1001888591
-** Anguo Shangguan  1001888799
-** Ziwei Liu 1001888811
+** Lu Minyi 1001888591
+** Shangguan Anguo 1001888799
+** Liu Ziwei 1001888811
 **/
 body {
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
@@ -25,54 +25,6 @@ body {
     background: white;
     border-radius: 8px;
     padding: 20px;
-}
-.nav {
-    position: absolute;
-    top: 0;
-    z-index: 9;
-    width: 100%;
-}
-.nav_container {
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    width: 90%;
-    height: 60px;
-    border-bottom: solid 1px white;
-}
-.nav_container span {
-    display: block;
-    width: 200px;
-    height: 60px;
-    margin-left: 20px;
-    line-height: 60px;
-    text-align: center;
-    color: white;
-    font-size: 24px;
-    font-weight: 500;
-}
-.nav ul {
-    margin: 0 30px 0 0;
-    height: 60px;
-    line-height: 60px;
-}
-.nav ul li {
-    list-style: none;
-    display: inline;
-    margin-left: 20px;
-    color: white;
-    font-size: 18px;
-    font-weight: 200;
-}
-.nav ul li a {
-    cursor: pointer;
-    text-decoration: none;
-}
-.nav ul li a:visited {
-    color: white;
-}
-.nav ul li a:active {
-    color: white;
 }
 #service_dialog {
     width: 500px;
