@@ -1,4 +1,8 @@
-
+/**
+** Lu Minyi 1001888591
+** Shangguan Anguo 1001888799
+** Liu Ziwei 1001888811
+**/
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +10,7 @@
 
 body {
     max-width: 1920px;
-    
+
     background: url("../assets/login.jpg");
     background-repeat: no-repeat;
     background-size: auto;
@@ -129,13 +133,13 @@ section h1 {
     list-style: none;
     display: inline;
     margin-left: 20px;
-    color: white;
     font-size: 18px;
     font-weight: 200;
 }
 .nav ul li a {
     cursor: pointer;
     text-decoration: none;
+    color: white;
 }
 .nav ul li a:visited {
     color: white;

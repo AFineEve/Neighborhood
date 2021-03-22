@@ -1,4 +1,8 @@
-
+/**
+** Lu Minyi 1001888591
+** Shangguan Anguo 1001888799
+** Liu Ziwei 1001888811
+**/
 * {
     margin: 0;
     padding: 0;
@@ -19,7 +23,54 @@ body {
     color: rgb(0, 0, 0);
     cursor: pointer;
 }
-
+.nav {
+    position: absolute;
+    top: 0;
+    z-index: 9;
+    width: 100%;
+}
+.nav_container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 90%;
+    height: 60px;
+    border-bottom: solid 1px white;
+}
+.nav_container span {
+    display: block;
+    width: 200px;
+    height: 60px;
+    margin-left: 20px;
+    line-height: 60px;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+}
+.nav ul {
+    margin: 0 30px 0 0;
+    height: 60px;
+    line-height: 60px;
+}
+.nav ul li {
+    list-style: none;
+    display: inline;
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: 200;
+}
+.nav ul li a {
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+}
+.nav ul li a:visited {
+    color: white;
+}
+.nav ul li a:active {
+    color: white;
+}
 .box {
     float: left;
     position: relative;
