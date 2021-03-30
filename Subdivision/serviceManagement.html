@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <title>Subdivision</title>
+
+    <script src="../js_public/login_status.js"></script>
+    <link rel="stylesheet" type="text/css" href="aside.css">
+    <link rel="stylesheet" type="text/css" href="serviceManagement.css">
+
+</head>
+
+<body>
 <script>
+    console.log(JSON.parse(sessionStorage.getItem("user_info")));
     function addService() {
         const target = document.getElementById('service_dialog');
         if (target.style.display === 'none') {
@@ -13,13 +24,8 @@
             target.style.display = 'none';
         }
     }
+
 </script>
-<head>
-    <title>Subdivision</title>
-    <link rel="stylesheet" type="text/css" href="aside.css">
-    <link rel="stylesheet" type="text/css" href="serviceManagement.css">
-</head>
-<body>
     <nav class="nav">
     <div class="nav_container">
         <span>NEIGHBORHOOD</span>
@@ -109,4 +115,5 @@
         </div>
     </div>
 </body>
+
 </html>

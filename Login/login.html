@@ -32,24 +32,25 @@
                     Telephone<br>
                 </label>
                 <label class="login_input">
-                    <input type="text" name="login_name" class="login_name">
+                    <input type="text" id="login_name" name="login_name" class="login_name">
                 </label>
                 <label class="login_text">
                     Password<br>
                 </label>
                 <label class="login_input">
-                    <input type="password" name="login_pwd">
+                    <input type="password" id="login_pwd" name="login_pwd">
                 </label>
-                <label class="login_text">
-                    User Type
-                </label>
-                <label>
-                    <select class="login_input" id="role">
-                        <option value="SubdivisionOwner">Subdivision Owner</option>
-                        <option value="BuildingOwner">Building Owner</option>
-                        <option value="ApartmentOwner">Apartment Owner</option>
-                    </select>
-                </label>
+<!--                <label class="login_text">-->
+<!--                    User Type-->
+<!--                </label>-->
+<!--                <label>-->
+<!--                    <select class="login_input" id="role">-->
+<!--                        <option value="SubdivisionOwner">Subdivision Owner</option>-->
+<!--                        <option value="BuildingOwner">Building Owner</option>-->
+<!--                        <option value="ApartmentOwner">Apartment Owner</option>-->
+<!--                        <option value="SuperUser">Super User</option>-->
+<!--                    </select>-->
+<!--                </label>-->
                 <button class="login_submit" type="submit" onclick="login();return false;">
                     Submit
                 </button>
@@ -59,13 +60,48 @@
     </div>
 </body>
 <script>
-    function login(){
-        var role = document.getElementById("role");
-        var index = role.selectedIndex; 
-        var value = role.options[index].value;
-        if(value == "SubdivisionOwner") {window.location.href="../Subdivision/serviceManagement.html";}
-        if(value == "BuildingOwner") {window.location.href="../Building/building_services.html";}
-        if(value == "ApartmentOwner") {window.location.href="../Apartment/apartment_services.html";}
+    function post(user_name, user_pwd) {
+        var xhr=null;
+        try{
+            xhr=new XMLHttpRequest();
+        }catch(e){
+            xhr=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        //post
+        xhr.open("post","./login.php",true);
+        //set header
+        xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+        //send data
+        xhr.send("username="+user_name+"&pwd="+user_pwd);
+        //action
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState===4){
+                if(xhr.status===200){
+                    let result = JSON.parse(xhr.responseText);
+                    if (result.status === "success"){
+                        sessionStorage.setItem("user_info", xhr.responseText);
+                        //redirect to the page by role
+                        if (result.role === "SubdivisionOwner") {window.location.href="../Subdivision/serviceManagement.html";}
+                        if (result.role === "BuildingOwner") {window.location.href="../Building/building_services.html";}
+                        if (result.role === "ApartmentOwner") {window.location.href="../Apartment/apartment_services.html";}
+                        if (result.role === "SuperUser") {window.location.href="../SuperUser/subdivisionOwner.html";}
+                    } else if (result.status === "fail") {
+                        alert("Error username or password")
+                    }
+                }else{
+                    alert("错误"+xhr.status);
+                }
+            }
+        }
     }
+
+
+    function login(){
+        let user_name = document.getElementById("login_name").value;
+        let user_pwd = document.getElementById("login_pwd").value;
+        post(user_name, user_pwd);
+
+    }
+
 </script>
 </html>
