@@ -29,5 +29,5 @@ xhr.onreadystatechange=function(){
             alert("错误"+xhr.status);
         }
     }
-}
+};
 

@@ -8,11 +8,11 @@ foreach ($posts as $key => $value) {
     $posts[$key] = trim($value);
 }
 $password = $posts["pwd"];
-$phone= $posts["username"];
+$email= $posts["email"];
 
 // 创建连接
 $database = new DataBase();
-$sql = "select id, name, age, gender, email, telephone, role from user where telephone='$phone' and password='$password'";
+$sql = "select id, name, age, gender, email, telephone, role from user where email='$email' and password='$password'";
 $result = $database->execute($sql);
 $result_array = $database->fetchAssoc();
 

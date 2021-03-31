@@ -29,10 +29,10 @@
             </div>
             <form class="login_form">
                 <label class="login_text">
-                    Telephone<br>
+                    Email<br>
                 </label>
                 <label class="login_input">
-                    <input type="text" id="login_name" name="login_name" class="login_name">
+                    <input type="text" id="email" name="email" class="login_name">
                 </label>
                 <label class="login_text">
                     Password<br>
@@ -60,7 +60,7 @@
     </div>
 </body>
 <script>
-    function post(user_name, user_pwd) {
+    function post(email, user_pwd) {
         var xhr=null;
         try{
             xhr=new XMLHttpRequest();
@@ -72,7 +72,7 @@
         //set header
         xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
         //send data
-        xhr.send("username="+user_name+"&pwd="+user_pwd);
+        xhr.send("email="+email+"&pwd="+user_pwd);
         //action
         xhr.onreadystatechange=function(){
             if(xhr.readyState===4){
@@ -97,9 +97,9 @@
 
 
     function login(){
-        let user_name = document.getElementById("login_name").value;
+        let email = document.getElementById("email").value;
         let user_pwd = document.getElementById("login_pwd").value;
-        post(user_name, user_pwd);
+        post(email, user_pwd);
 
     }
 

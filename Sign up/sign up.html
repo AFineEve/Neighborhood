@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>SIGN UP</title>
 	<link rel="stylesheet" href="sign up.css" type="text/css">
+	<script src="./sign up.js"></script>
 </head>
 <body style="background-color: rgb(139,203,187);">
 	<nav class="nav">
@@ -47,43 +48,46 @@
 				<table>
 					<tr>
 						<td>Name:</td>
-						<td><input type="text" name="name"></td>
+						<td><input type="text" id="name" name="name"></td>
 					</tr>
 					<tr>
 						<td>Password:</td>
-						<td><input type="text" name="password"></td>
+						<td><input type="text" id="password" name="password"></td>
 					</tr>
 					<tr>
 						<td>Confirm Password:</td>
-						<td><input type="text" name="c_password"></td>
+						<td><input type="text" id="c_password" name="c_password"></td>
 					</tr>
 					<tr>
 						<td>Age:</td>
-						<td><input type="text" name="age"></td>
+						<td><input type="text" id="age" name="age"></td>
 					</tr>
 					<tr>
 						<td>Gender:</td>
-						<td><input type="text" name="gender"></td>
+						<td><input type="text" id="gender" name="gender"></td>
 					</tr>
 					<tr>
 						<td>Email:</td>
-						<td><input type="text" name="email"></td>
+						<td>
+							<div id="container">
+								<input type="text" id="email" name="email">
+								<input type="button" id="button_verify" onclick="verify()" value="Verify">
+							</div>
+						</td>
 					</tr>
 					<tr>
 						<td>Verification Code:</td>
-						<td>
-							<div id="container">
-								<input type="text" name="verification_code">
-								<input type="button" id="button_verify" onclick="alert('The verification code has been sent')" value="Verify">
-							</div>
-
-						</td>
+						<td><input type="text" id="verification_code" name="verification_code"></td>
 
 					</tr>
 
 					<tr>
 						<td>Telephone:</td>
-						<td><input type="text" name="telephone"></td>
+						<td><input type="text" id="telephone" name="telephone"></td>
+					</tr>
+					<tr>
+						<td>Attachment:</td>
+						<td><input type="file" id="attachment" name="attachment" value="Choose file" style="width: 250px"></td>
 					</tr>
 				</table>
 			</div>
