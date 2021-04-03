@@ -32,8 +32,10 @@
         xhr.onreadystatechange=function(){
             if(xhr.readyState===4 && xhr.status===200){
                 console.log(xhr.responseText);
-            } else {
-                console.log("ERROR." + xhr.status);
+                // get each service info
+                for (let i = 0; i < xhr.responseText.data.length; i++) {
+
+                }
             }
         }
     }
@@ -117,7 +119,7 @@
                 <button class="button button_add" onclick="openDialog()">Add a Service</button>
             </div>
             <div class="table_bkg">
-                <table>
+                <table id="tb_service">
                     <thead>
                         <tr>
                             <th>Building Number</th>
