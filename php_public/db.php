@@ -40,7 +40,28 @@ class DataBase{
     //select
     public function execute($sql) {
         $this->result = mysqli_query($this->conn,$sql);
+        if (!$this->result) {
+            printf("Error: %s\n", mysqli_error($this->conn));
+            exit();
+        }
         return $this->result;
+    }
+
+    //get more than one record return
+    public function getMultipleRecords() {
+        $i = 0;
+        $output = [];
+        $_this = $this;
+        while($row = $_this->fetchAssoc()){
+            $output["data"][$i] = $row;
+            $i++;
+        }
+        if ($this->numRows() > 0) {
+            $output["status"] = "success";
+        } else {
+            $output["status"] = "fail";
+        }
+        return $output;
     }
 
     //get number index and associate array  ["a"=>"a", "b"=>"b", 1=>"a", 2=>"b"]
@@ -80,7 +101,8 @@ class DataBase{
     public function insert($sql) {
         $this->execute ( $sql );
         $this->insert_id=mysqli_insert_id($this->conn);
-        return $this->affected_rows = mysqli_affected_rows ($this->conn);
+//        return $this->affected_rows = mysqli_affected_rows ($this->conn);
+        return $this->insert_id;
     }
 
     //update data

@@ -2,17 +2,76 @@
 <html lang="en">
 <head>
     <title>Subdivision</title>
-
     <script src="../js_public/login_status.js"></script>
     <link rel="stylesheet" type="text/css" href="aside.css">
     <link rel="stylesheet" type="text/css" href="serviceManagement.css">
 
 </head>
 
-<body>
+<body onload="getServiceInfo()">
 <script>
     console.log(JSON.parse(sessionStorage.getItem("user_info")));
+    function getServiceInfo() {
+        console.log("getServiceInfo start.");
+        // TODO: get subdivision_id from sessionStorage.
+        let subdivision_id = 1;
+
+        let xhr;
+        try{
+            xhr=new XMLHttpRequest();
+        }catch(e){
+            xhr=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        //post
+        xhr.open("post","./serviceManagement/getServiceInfo.php",true);
+        //set header
+        xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+        //send data
+        xhr.send("subdivision_id="+subdivision_id);
+        //action
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState===4 && xhr.status===200){
+                console.log(xhr.responseText);
+            } else {
+                console.log("ERROR." + xhr.status);
+            }
+        }
+    }
     function addService() {
+        // pop out add service dialog
+        openDialog();
+        // get the parameters
+        let serviceType = document.getElementsByName("serviceType")[0].value;
+        let supplier = document.getElementsByName("serviceSupplier")[0].value;
+        // TODO: get subdivision_id from sessionStorage.
+        let subdivision_id = 1;
+        // request add service api
+        let xhr;
+        try{
+            xhr=new XMLHttpRequest();
+        }catch(e){
+            xhr=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        //post
+        xhr.open("post","./serviceManagement/addService.php",false);
+        //set header
+        xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+        //send data
+        xhr.send("serviceType="+serviceType+"&supplier="+supplier+"&subdivision_id="+subdivision_id);
+        //action
+        if (xhr.readyState===4 && xhr.status === 200) {
+            let result = xhr.responseText;
+            if (result > 0) {
+                alert("Add the service succeeded.");
+            } else {
+                alert("Add the service failed.");
+            }
+        } else {
+            alert("ERROR." + xhr.status);
+        }
+        closeDialog();
+    }
+    function openDialog() {
         const target = document.getElementById('service_dialog');
         if (target.style.display === 'none') {
             target.style.display = 'block';
@@ -55,7 +114,7 @@
         </aside>
         <div class="content">
             <div style="padding-left: 30px; margin-top: 10px">
-                <button class="button button_add" onclick="addService()">Add a Service</button>
+                <button class="button button_add" onclick="openDialog()">Add a Service</button>
             </div>
             <div class="table_bkg">
                 <table>
@@ -65,7 +124,6 @@
                             <th>Service Name</th>
                             <th>Unit price</th>
                             <th>Current Usage</th>
-                            <th>Update Date</th>
                             <th>Action</th>
                     </tr>
                     </thead>
@@ -75,11 +133,9 @@
                             <td>Water</td>
                             <td>1.04$</td>
                             <td>714t</td>
-                            <td>2021.3.6</td>
                             <td>
-                                <button class="button button_send">Send Report</button>
-                                <button class="button button_detail">Delete</button>
-                                <button class="button button_modify">Pause</button>
+                                <button class="button button_send" onclick="">Send Report</button>
+                                <button class="button button_detail" onclick="">Delete</button>
                         </td>
                     </tr>
                     </tbody>
@@ -91,7 +147,7 @@
             <div class="dialog_text">
                 <span>Service Type</span>
                 <label>
-                    <select>
+                    <select name="serviceType">
                         <option>Water</option>
                         <option>Electricity</option>
                         <option>Gas</option>
@@ -101,7 +157,7 @@
             <div class="dialog_text">
                 <span>Service Supplier</span>
                 <label>
-                    <select>
+                    <select name="serviceSupplier">
                         <option>Water Resource Bureau</option>
                         <option>Electricity Resource Bureau</option>
                         <option>Gas Resource Bureau</option>
@@ -109,7 +165,7 @@
                 </label>
             </div>
             <div class="dialog_button_container">
-                <button onclick="closeDialog()">Register</button>
+                <button type="submit" onclick="addService()">Register</button>
                 <button onclick="closeDialog()">Cancel</button>
             </div>
         </div>
