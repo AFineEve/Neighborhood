@@ -56,11 +56,6 @@ class DataBase{
             $output["data"][$i] = $row;
             $i++;
         }
-        if ($this->numRows() > 0) {
-            $output["status"] = "success";
-        } else {
-            $output["status"] = "fail";
-        }
         return $output;
     }
 
