@@ -81,15 +81,15 @@
                     if (result.status === "success"){
                         sessionStorage.setItem("user_info", xhr.responseText);
                         //redirect to the page by role
-                        if (result.role === "SubdivisionOwner") {window.location.href="../Subdivision/serviceManagement.html";}
-                        if (result.role === "BuildingOwner") {window.location.href="../Building/building_services.html";}
-                        if (result.role === "ApartmentOwner") {window.location.href="../Apartment/apartment_services.html";}
-                        if (result.role === "SuperUser") {window.location.href="../SuperUser/subdivisionOwner.html";}
+                        if (result.role === "subdivision") {window.location.href="../Subdivision/serviceManagement.html";}
+                        if (result.role === "building") {window.location.href="../Building/building_services.html";}
+                        if (result.role === "apartment") {window.location.href="../Apartment/apartment_services.html";}
+                        if (result.role === "superuser") {window.location.href="../SuperUser/subdivisionOwner.html";}
                     } else if (result.status === "fail") {
                         alert("Error username or password")
                     }
                 }else{
-                    alert("错误"+xhr.status);
+                    alert("error"+xhr.status);
                 }
             }
         }

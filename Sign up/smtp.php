@@ -1,15 +1,7 @@
 <?php
 
 /**
- * email smtp （support php7）
- *
- * Modified by: Reson 2017/06
- * UPDATE:
- * 1、change ereg to preg_match；change ereg_replace to preg_replace.
- * 2、change var to public/private.
- *
- * More: http://www.daixiaorui.com
- *
+ * email smtp
  */
 
 
@@ -273,8 +265,6 @@ class Smtp
             return FALSE;
 
         }
-
-        //专注与php学习 http://www.daixiaorui.com 欢迎您的访问
 
         foreach ($MXHOSTS as $host) {
 
