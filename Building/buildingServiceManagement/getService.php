@@ -1,11 +1,11 @@
 <?php
 require "../../php_public/db.php";
 
-$subdivision_id = $_POST["subdivision_id"];
+$building_id = $_POST["building_id"];
 
 // get service ids registered by current subdivision
 $database = new DataBase();
-$sql = "select service_id from subdivision_service where subdivision_id = '$subdivision_id'";
+$sql = "select service_id from building_service where building_id = '$building_id'";
 $result = $database->execute($sql);
 $result_array = $database->getMultipleRecords();
 
