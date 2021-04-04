@@ -25,15 +25,12 @@ function verify() {
                 } else if (result.status === "fail"){
                     alert("Failed! Reason is "+result.reason);
                 }
-
-
             }else{
                 alert("error: "+xhr.status);
             }
         }
     };
 }
-
 
 function register() {
     if (document.getElementById("password").value != document.getElementById("c_password").value) {
@@ -45,7 +42,17 @@ function register() {
         return;
     }
     var form = document.getElementById("register_form");
-    form.submit();
+    console.log(form.age.value);
+    // age,gender,email,tel validation
+    if (onlyNumValidation(form.age.value)
+        &&onlyCharacterValidation(form.gender.value)
+        &&emailValidation(form.email.value)
+        &&onlyNumValidation(form.telephone.value)) {
+        form.submit();
+    } else {
+        alert("Please check your input format.")
+    }
+
     // var form = new FormData();
     // form.append("subdivision_name", document.getElementById("subdivision_name").value);
     // form.append("subdivision_address", document.getElementById("subdivision_address").value);
@@ -59,10 +66,6 @@ function register() {
     // ajax("post", form, "./register.php")
     // form.append("name", document.getElementById("name").value);
     // console.log(form.entries().next());
-
-
-
-
 }
 
 function checkName() {

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Neighborhood Login</title>
     <link rel="stylesheet" href="login.css" type="text/css">
+    <script src="../Utils/Validation.js"></script>
 </head>
 <body>
     <nav class="nav">
@@ -98,8 +99,11 @@
     function login(){
         let email = document.getElementById("email").value;
         let user_pwd = document.getElementById("login_pwd").value;
-        post(email, user_pwd);
-
+        if (emailValidation(email)) {
+            post(email, user_pwd);
+        } else {
+            alert("The format of email is wrong.");
+        }
     }
 
 </script>

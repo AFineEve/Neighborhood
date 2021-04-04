@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<title>SIGN UP</title>
 	<link rel="stylesheet" href="sign up.css" type="text/css">
+	<script src="../Utils/Validation.js"></script>
 	<script src="./sign up.js"></script>
 </head>
 <body style="background-color: rgb(139,203,187);">
@@ -24,7 +25,6 @@
 	<div align="center">
 		<form action="register.php" method="post" id="register_form" enctype="multipart/form-data">
 			<div id="aid">
-
 				<h3>What do you want Sign up for</h3>
 				<table>
 					<tr>
@@ -42,8 +42,6 @@
 
 
 			</div>
-
-
 			<div id="type_id"></div>
 			<div id="personal_information" style="display: none;">
 				<h3>Personal Information</h3>
@@ -142,7 +140,6 @@
 			//get subdivision info and building info
 			getInfo("subdivision");
 		}
-
 
 		document.getElementById("personal_information").removeAttribute("style");
 
