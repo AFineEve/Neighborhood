@@ -4,11 +4,8 @@
         <title>BUILDING</title>
         <link rel="stylesheet" type="text/css" href="aside.css">
         <link rel="stylesheet" type="text/css" href="building_services.css">
-
     </head>
-
-
-    <body>
+    <body onload="getBuildingServiceInfo()">
         <nav class="nav">
             <div class="nav_container">
                 <span>NEIGHBORHOOD</span>
@@ -23,7 +20,7 @@
             </div>
         </nav>
         <div class="sub_bkg">
-        <aside class="box" id="test">
+            <aside class="box" id="test">
             <ul>
                 <li>
                     <h3>Neighborhood</h3>
@@ -35,111 +32,135 @@
                 <li><a href="./building_personal_information.html">Profile</a></li>
             </ul>
         </aside>
-        <div class="content">
+            <div class="content">
             <h1 style="text-align: center;">Services Table</h1>
-            <!-- <div style="padding-left: 9%;">
-                <button class="button button_add">Add Service</button>
-            </div> -->
             <div style="margin-top: 50px;">
                 <table>
-                    <tr>
-                        <th></th>
-                        <th>Month</th>
-                        <th>Bill</th>
-                        <th>State</th>
-                        <th id="action">Action</th>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>2021.3</td>
-                        <td>1024</td>
-                        <td>Not Send</td>
-                        <td>
-                            <button class="button button_send" onclick="sendService()">Send Report</button>
-                            <button class="button button_detail" onclick="OpenDetail()">Details</button>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>2021.2</td>
-                        <td>1024</td>
-                        <td>Sended</td>
-                        <td>
-                            <button class="button button_send" onclick="sendService()">Send Report</button>
-                            <button class="button button_detail" onclick="OpenDetail()">Details</button>
-
-                        </td>
-                    </tr>
+                    <thead>
+                        <tr>
+                            <th>Service Name</th>
+                            <th>Unit Price</th>
+                            <th>Current Usage</th>
+                            <th>Total Usage</th>
+                            <th id="action">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbody_service">
+                        <tr id="last_tr">
+                            <td><input name="last" value="" type="hidden"/></td>
+<!--                            <button class="button button_send" onclick="sendService()">Send Report</button>-->
+                        </tr>
+                    </tbody>
                 </table>
             </div>
-
         </div>
-        <div id="service_dialog_details" style="display: none">
-            <div class="dialog_text">
-                <table style="color: white;">
-                    <tr>
-                        <th>Service Name</th>
-                        <th>Total Usage</th>
-                        <th>Bill</th>
-                    </tr>
-                    <tr>
-                        <td>Water</td>
-                        <td>1024</td>
-                        <td>512</td>
-                    </tr>
-                    <tr>
-                        <td>Gas</td>
-                        <td>1024</td>
-                        <td>512</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td>Total:1024</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="dialog_button_container">
-
-                <button onclick="CloseDetail()">Close</button>
-            </div>
         </div>
-        <div id="send_service_dialog" style="display: none">
+<!--        <div id="send_service_dialog" style="display: none">-->
+<!--            <div class="dialog_button_container">-->
+<!--                <button onclick="closeDialog()">Send</button>-->
+<!--                <button onclick="closeDialog()">Cancel</button>-->
+<!--            </div>-->
+<!--        </div>-->
+        <script>
+                function getBuildingServiceInfo() {
+                    console.log(JSON.parse(sessionStorage.getItem("user_info")));
+                    // TODO: get building_id from sessionStorage.
+                    let building_id = 1;
 
-            <div class="dialog_button_container">
-                <button onclick="closeDialog()">Send</button>
-                <button onclick="closeDialog()">Cancel</button>
-            </div>
-        </div>
+                    let xhr;
+                    try{
+                        xhr=new XMLHttpRequest();
+                    }catch(e){
+                        xhr=new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    //post
+                    xhr.open("post","./buildingServiceManagement/getService.php",true);
+                    //set header
+                    xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+                    //send data
+                    xhr.send("building_id="+building_id);
+                    //action
+                    xhr.onreadystatechange=function(){
+                        if(xhr.readyState===4 && xhr.status===200){
+                            // generate service item
+                            let service_info_arr = JSON.parse(xhr.responseText);
+                            service_info_arr.forEach(function (element) {
+                                // create a row
+                                let tr = document.createElement("tr");
+                                // service name
+                                let td = document.createElement("td");
+                                let tdContent = document.createTextNode(element.service_name);
+                                td.appendChild(tdContent);
+                                tr.appendChild(td);
+                                // unit price
+                                td = document.createElement("td");
+                                tdContent = document.createTextNode(element.unit_price);
+                                td.appendChild(tdContent);
+                                tr.appendChild(td);
+                                // current usage
+                                td = document.createElement("td");
+                                tdContent = document.createTextNode(element.current_usage);
+                                td.appendChild(tdContent);
+                                tr.appendChild(td);
+                                // total usage
+                                td = document.createElement("td");
+                                tdContent = document.createTextNode(element.total_usage);
+                                td.appendChild(tdContent);
+                                tr.appendChild(td);
 
-        </div>
+                                // generate buttons with onclick function
+                                td = document.createElement("td");
+                                let send_report_btn = document.createElement("button");
+                                send_report_btn.innerHTML = "send report";
+                                send_report_btn.className = "button button_send";
+                                send_report_btn.onclick = function () {
+                                    alert("Send report succeeded.");
+                                };
+                                let delete_btn = document.createElement("button");
+                                delete_btn.innerHTML = "delete ";
+                                delete_btn.className = "button button_detail";
+                                delete_btn.onclick = function () {
+                                    deleteBuildingService(element.id, building_id);
+                                };
+                                td.appendChild(send_report_btn);
+                                td.appendChild(delete_btn);
+                                tr.appendChild(td);
 
+                                document.getElementById("tbody_service").insertBefore(tr, document.getElementById("last_tr"));
+                            })
+                        }
+                    }
+                }
+                function deleteBuildingService(service_id, building_id) {
+                    let xhr;
+                    try{
+                        xhr=new XMLHttpRequest();
+                    }catch(e){
+                        xhr=new ActiveXObject("Microsoft.XMLHTTP");
+                    }
+                    //post
+                    xhr.open("post","./buildingServiceManagement/deleteService.php",false);
+                    //set header
+                    xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+                    //send data
+                    xhr.send("service_id="+service_id+"&building_id="+building_id);
+                    //action
+                    if(xhr.readyState===4 && xhr.status===200){
+                        alert("Delete item succeeded.");
+                    }
+                }
+                function sendService() {
+                    const target = document.getElementById('send_service_dialog');
+                    if (target.style.display === 'none') {
+                        target.style.display = 'block';
+                    }
+                }
+                function closeDialog() {
+                    const target = document.getElementById('send_service_dialog');
+                    if (target.style.display === 'block') {
+                        target.style.display = 'none';
+                    }
+                }
+            </script>
     </body>
-    <script>
-        function OpenDetail() {
-            const target = document.getElementById('service_dialog_details');
-            if (target.style.display === 'none') {
-                target.style.display = 'block';
-            }
-        }
-        function CloseDetail() {
-            const target = document.getElementById('service_dialog_details');
-            if (target.style.display === 'block') {
-                target.style.display = 'none';
-            }
-        }
-        function sendService() {
-            const target = document.getElementById('send_service_dialog');
-            if (target.style.display === 'none') {
-                target.style.display = 'block';
-            }
-        }
-        function closeDialog() {
-            const target = document.getElementById('send_service_dialog');
-            if (target.style.display === 'block') {
-                target.style.display = 'none';
-            }
-        }
-    </script>
 </html>

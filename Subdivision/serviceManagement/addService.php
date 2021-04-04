@@ -10,7 +10,7 @@ $subdivision_id = $_POST["subdivision_id"];
 $database = new DataBase();
 
 $sql = "insert into service (id, service_name, unit_price, current_usage, total_usage, supplier) 
-    values (0, '$serviceType', 0.5, 10, 110, '$serviceSupplier')";
+    values (0, '$serviceType', 0.5, 0, 0, '$serviceSupplier')";
 $result = $database->insert($sql);
 
 // return registered service id

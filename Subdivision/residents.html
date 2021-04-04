@@ -1,25 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<script>
-    function startChat() {
-        const target = document.getElementById('chat_dialog');
-        if (target.style.display === 'none') {
-            target.style.display = 'block';
-        }
-    }
-    function closeDialog() {
-        const target = document.getElementById('chat_dialog');
-        if (target.style.display === 'block') {
-            target.style.display = 'none';
-        }
-    }
-</script>
 <head>
     <title>Subdivision</title>
     <link rel="stylesheet" type="text/css" href="aside.css">
     <link rel="stylesheet" type="text/css" href="residents.css">
 </head>
-<body>
+<body onload="getResidentInfo()">
 <nav class="nav">
     <div class="nav_container">
         <span>NEIGHBORHOOD</span>
@@ -57,41 +43,16 @@
                     <th>Apartment Num</th>
                     <th>Gender</th>
                     <th>Age</th>
-                    <th>ID</th>
                     <th>Email</th>
                     <th>Tel</th>
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Lori</td>
-                    <td>No.1</td>
-                    <td>1025</td>
-                    <td>Female</td>
-                    <td>25</td>
-                    <td>300193199501041189</td>
-                    <td>lori@gmail.com</td>
-                    <td>15328345732</td>
-                    <td>
-                        <button class="chat" onclick="startChat()">Chat</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Richard</td>
-                    <td>No.19</td>
-                    <td>1019</td>
-                    <td>Male</td>
-                    <td>32</td>
-                    <td>300193199112041189</td>
-                    <td>richard@gmail.com</td>
-                    <td>15528125732</td>
-                    <td>
-                        <button class="chat" onclick="startChat()">Chat</button>
-                    </td>
-                </tr>
+            <tbody id="tbody_service">
+            <tr id="last_tr">
+                <td><input name="last" value="" type="hidden"/></td>
+<!--                <button class="chat" onclick="startChat()">Chat</button>-->
+            </tr>
             </tbody>
         </table>
     </div>
@@ -109,5 +70,99 @@
         </div>
     </div>
 </div>
+<script>
+    console.log(JSON.parse(sessionStorage.getItem("user_info")));
+    function getResidentInfo() {
+        // TODO: get subdivision_id from sessionStorage.
+        let subdivision_id = 1;
+        let xhr;
+        try{
+            xhr=new XMLHttpRequest();
+        }catch(e){
+            xhr=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        //post
+        xhr.open("post","./residents.php",true);
+        //set header
+        xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+        //send data
+        xhr.send("subdivision_id="+subdivision_id);
+        //action
+        xhr.onreadystatechange=function(){
+            if(xhr.readyState===4 && xhr.status===200){
+                // generate service item
+                let owner_info_arr = JSON.parse(xhr.responseText);
+                owner_info_arr.forEach(function (element) {
+                    // create a row
+                    let tr = document.createElement("tr");
+                    // id
+                    let td = document.createElement("td");
+                    let tdContent = document.createTextNode(element.id);
+                    td.appendChild(tdContent);
+                    tr.appendChild(td);
+                    // name
+                    td = document.createElement("td");
+                    tdContent = document.createTextNode(element.name);
+                    td.appendChild(tdContent);
+                    tr.appendChild(td);
+                    // building num
+                    td = document.createElement("td");
+                    tdContent = document.createTextNode(element.building_id);
+                    td.appendChild(tdContent);
+                    tr.appendChild(td);
+                    // apartment num
+                    td = document.createElement("td");
+                    tdContent = document.createTextNode(element.apartment_number);
+                    td.appendChild(tdContent);
+                    tr.appendChild(td);
+                    // gender
+                    td = document.createElement("td");
+                    tdContent = document.createTextNode(element.gender);
+                    td.appendChild(tdContent);
+                    tr.appendChild(td);
+                    // age
+                    td = document.createElement("td");
+                    tdContent = document.createTextNode(element.age);
+                    td.appendChild(tdContent);
+                    tr.appendChild(td);
+                    // email
+                    td = document.createElement("td");
+                    tdContent = document.createTextNode(element.email);
+                    td.appendChild(tdContent);
+                    tr.appendChild(td);
+                    // tel
+                    td = document.createElement("td");
+                    tdContent = document.createTextNode(element.telephone);
+                    td.appendChild(tdContent);
+                    tr.appendChild(td);
+                    // generate buttons with onclick function
+                    td = document.createElement("td");
+                    let chat_btn = document.createElement("button");
+                    chat_btn.innerHTML = "chat";
+                    chat_btn.className = "chat";
+                    chat_btn.onclick = function () {
+                        startChat();
+                    };
+                    td.appendChild(chat_btn);
+                    tr.appendChild(td);
+
+                    document.getElementById("tbody_service").insertBefore(tr, document.getElementById("last_tr"));
+                })
+            }
+        }
+    }
+    function startChat() {
+        const target = document.getElementById('chat_dialog');
+        if (target.style.display === 'none') {
+            target.style.display = 'block';
+        }
+    }
+    function closeDialog() {
+        const target = document.getElementById('chat_dialog');
+        if (target.style.display === 'block') {
+            target.style.display = 'none';
+        }
+    }
+</script>
 </body>
 </html>

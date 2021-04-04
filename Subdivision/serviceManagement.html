@@ -5,88 +5,9 @@
     <script src="../js_public/login_status.js"></script>
     <link rel="stylesheet" type="text/css" href="aside.css">
     <link rel="stylesheet" type="text/css" href="serviceManagement.css">
-
 </head>
 
 <body onload="getServiceInfo()">
-<script>
-    console.log(JSON.parse(sessionStorage.getItem("user_info")));
-    function getServiceInfo() {
-        console.log("getServiceInfo start.");
-        // TODO: get subdivision_id from sessionStorage.
-        let subdivision_id = 1;
-
-        let xhr;
-        try{
-            xhr=new XMLHttpRequest();
-        }catch(e){
-            xhr=new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        //post
-        xhr.open("post","./serviceManagement/getServiceInfo.php",true);
-        //set header
-        xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
-        //send data
-        xhr.send("subdivision_id="+subdivision_id);
-        //action
-        xhr.onreadystatechange=function(){
-            if(xhr.readyState===4 && xhr.status===200){
-                console.log(xhr.responseText);
-                // get each service info
-                for (let i = 0; i < xhr.responseText.data.length; i++) {
-
-                }
-            }
-        }
-    }
-    function addService() {
-        // pop out add service dialog
-        openDialog();
-        // get the parameters
-        let serviceType = document.getElementsByName("serviceType")[0].value;
-        let supplier = document.getElementsByName("serviceSupplier")[0].value;
-        // TODO: get subdivision_id from sessionStorage.
-        let subdivision_id = 1;
-        // request add service api
-        let xhr;
-        try{
-            xhr=new XMLHttpRequest();
-        }catch(e){
-            xhr=new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        //post
-        xhr.open("post","./serviceManagement/addService.php",false);
-        //set header
-        xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
-        //send data
-        xhr.send("serviceType="+serviceType+"&supplier="+supplier+"&subdivision_id="+subdivision_id);
-        //action
-        if (xhr.readyState===4 && xhr.status === 200) {
-            let result = xhr.responseText;
-            if (result > 0) {
-                alert("Add the service succeeded.");
-            } else {
-                alert("Add the service failed.");
-            }
-        } else {
-            alert("ERROR." + xhr.status);
-        }
-        closeDialog();
-    }
-    function openDialog() {
-        const target = document.getElementById('service_dialog');
-        if (target.style.display === 'none') {
-            target.style.display = 'block';
-        }
-    }
-    function closeDialog() {
-        const target = document.getElementById('service_dialog');
-        if (target.style.display === 'block') {
-            target.style.display = 'none';
-        }
-    }
-
-</script>
     <nav class="nav">
     <div class="nav_container">
         <span>NEIGHBORHOOD</span>
@@ -119,27 +40,19 @@
                 <button class="button button_add" onclick="openDialog()">Add a Service</button>
             </div>
             <div class="table_bkg">
-                <table id="tb_service">
+                <table>
                     <thead>
                         <tr>
-                            <th>Building Number</th>
                             <th>Service Name</th>
                             <th>Unit price</th>
                             <th>Current Usage</th>
                             <th>Action</th>
                     </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Water</td>
-                            <td>1.04$</td>
-                            <td>714t</td>
-                            <td>
-                                <button class="button button_send" onclick="">Send Report</button>
-                                <button class="button button_detail" onclick="">Delete</button>
-                        </td>
-                    </tr>
+                    <tbody id="tbody_service">
+                        <tr id="last_tr">
+                            <td><input name="last" value="" type="hidden"/></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -172,6 +85,135 @@
             </div>
         </div>
     </div>
-</body>
+    <script>
+        console.log(JSON.parse(sessionStorage.getItem("user_info")));
+        function getServiceInfo() {
+            console.log("getServiceInfo start.");
+            // TODO: get subdivision_id from sessionStorage.
+            let subdivision_id = 1;
 
+            let xhr;
+            try{
+                xhr=new XMLHttpRequest();
+            }catch(e){
+                xhr=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            //post
+            xhr.open("post","./serviceManagement/getServiceInfo.php",true);
+            //set header
+            xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+            //send data
+            xhr.send("subdivision_id="+subdivision_id);
+            //action
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState===4 && xhr.status===200){
+                    // generate service item
+                    let service_info_arr = JSON.parse(xhr.responseText);
+                    service_info_arr.forEach(function (element) {
+                        // create a row
+                        let tr = document.createElement("tr");
+                        let td = document.createElement("td");
+                        let tdContent = document.createTextNode(element.service_name);
+                        td.appendChild(tdContent);
+                        tr.appendChild(td);
+
+                        td = document.createElement("td");
+                        tdContent = document.createTextNode(element.unit_price);
+                        td.appendChild(tdContent);
+                        tr.appendChild(td);
+
+                        td = document.createElement("td");
+                        tdContent = document.createTextNode(element.current_usage);
+                        td.appendChild(tdContent);
+                        tr.appendChild(td);
+
+                        // generate buttons with onclick function
+                        td = document.createElement("td");
+                        let send_report_btn = document.createElement("button");
+                        send_report_btn.innerHTML = "send report";
+                        send_report_btn.className = "button button_send";
+                        send_report_btn.onclick = function () {
+                            alert("Send report succeeded.");
+                        };
+                        let delete_btn = document.createElement("button");
+                        delete_btn.innerHTML = "delete ";
+                        delete_btn.className = "button button_detail";
+                        delete_btn.onclick = function () {
+                            deleteService(element.id, subdivision_id);
+                        };
+                        td.appendChild(send_report_btn);
+                        td.appendChild(delete_btn);
+                        tr.appendChild(td);
+
+                        document.getElementById("tbody_service").insertBefore(tr, document.getElementById("last_tr"));
+                    })
+                }
+            }
+        }
+        function addService() {
+            // pop out add service dialog
+            openDialog();
+            // get the parameters
+            let serviceType = document.getElementsByName("serviceType")[0].value;
+            let serviceSupplier = document.getElementsByName("serviceSupplier")[0].value;
+            // TODO: get subdivision_id from sessionStorage.
+            let subdivision_id = 1;
+            // request add service api
+            let xhr;
+            try{
+                xhr=new XMLHttpRequest();
+            }catch(e){
+                xhr=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            //post
+            xhr.open("post","./serviceManagement/addService.php",false);
+            //set header
+            xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+            //send data
+            xhr.send("serviceType="+serviceType+"&serviceSupplier="+serviceSupplier+"&subdivision_id="+subdivision_id);
+            //action
+            if (xhr.readyState===4 && xhr.status === 200) {
+                let result = xhr.responseText;
+                if (result > 0) {
+                    alert("Add the service succeeded.");
+                } else {
+                    alert("Add the service failed.");
+                }
+            } else {
+                alert("ERROR." + xhr.status);
+            }
+            closeDialog();
+        }
+        function deleteService(service_id, subdivision_id) {
+            let xhr;
+            try{
+                xhr=new XMLHttpRequest();
+            }catch(e){
+                xhr=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            //post
+            xhr.open("post","./serviceManagement/deleteService.php",false);
+            //set header
+            xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+            //send data
+            xhr.send("service_id="+service_id+"&subdivision_id="+subdivision_id);
+            //action
+            if(xhr.readyState===4 && xhr.status===200){
+                alert("Delete item succeeded.");
+            }
+        }
+        function openDialog() {
+            const target = document.getElementById('service_dialog');
+            if (target.style.display === 'none') {
+                target.style.display = 'block';
+            }
+        }
+        function closeDialog() {
+            const target = document.getElementById('service_dialog');
+            if (target.style.display === 'block') {
+                target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
 </html>
