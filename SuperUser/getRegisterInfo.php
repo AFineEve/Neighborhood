@@ -35,6 +35,7 @@ if ($userInfo){
         $registerInfo = $database->getMultipleRecords();
     }
 }
+$database->close();
 $output["userInfo"] = $userInfo;
 $output["registerInfo"] = $registerInfo;
 $output["status"] = "success";

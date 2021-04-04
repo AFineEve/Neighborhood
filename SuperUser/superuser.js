@@ -24,7 +24,7 @@ function getAllCheckUser() {
                         console.log(result.data[i]);
                         inner += "<tr><td>"+(i+1)+"</td><td>"+result.data[i].name+"</td><td>"
                             +result.data[i].role+"</td><td>"+result.data[i].email+
-                            "</td><td><button class='chat' onclick='openDialog(\""+result.data[i].email+"\")'>Detail</button><button class='chat'>Cancel</button></td></tr>"
+                            "</td><td><button class='chat' onclick='openDialog(\""+result.data[i].email+"\")'>Detail</button><button class='chat' onclick='disagree(\""+result.data[i].email+"\")'>Disagree</button></td></tr>"
                     }
                     tbody.innerHTML=inner;
                 } else if (result.status === "fail"){
@@ -90,12 +90,12 @@ function getRegisterInfo(email) {
                             document.getElementById('info').innerHTML=info;
                         }
                         if (result.userInfo.data[0].role === "building"){
-                            var info = "subdivision: " + result.registerInfo.data[0].name + " building number: " + result.registerInfo.data[0].building_number;
+                            var info = "subdivision: " + result.registerInfo.data[0].name + ", building number: " + result.registerInfo.data[0].building_number;
                             document.getElementById('info').innerHTML=info;
                         }
                         if (result.userInfo.data[0].role === "apartment"){
-                            var info = "subdivision: " + result.registerInfo.data[0].name + " building number: " +
-                                result.registerInfo.data[0].building_number + " apartment number: " + result.registerInfo.data[0].apartment_number;
+                            var info = "subdivision: " + result.registerInfo.data[0].name + ", building number: " +
+                                result.registerInfo.data[0].building_number + ", apartment number: " + result.registerInfo.data[0].apartment_number;
                             document.getElementById('info').innerHTML=info;
                         }
                     }
@@ -106,6 +106,74 @@ function getRegisterInfo(email) {
                     // name.innerHTML = result.userInfo.data[0].name;
 
 
+                } else if (result.status === "fail"){
+                    alert(result.reason);
+                }
+
+
+            }else{
+                alert("error: "+xhr.status);
+            }
+        }
+    };
+}
+
+function agree() {
+    var email = document.getElementById("email").innerText;
+    console.log(email);
+    var xhr=null;
+    try{
+        xhr=new XMLHttpRequest();
+    }catch(e){
+        xhr=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xhr.open("post","./agreeRegister.php",true);
+    //set header
+    xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+    //send data
+    xhr.send("email="+email);
+    //action
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState===4){
+            if(xhr.status===200){
+                let result = JSON.parse(xhr.responseText);
+                console.log(result);
+                if (result.status === "success"){
+                    location.reload();
+                } else if (result.status === "fail"){
+                    alert(result.reason);
+                }
+
+
+            }else{
+                alert("error: "+xhr.status);
+            }
+        }
+    };
+}
+
+function disagree(email) {
+
+    console.log(email);
+    var xhr=null;
+    try{
+        xhr=new XMLHttpRequest();
+    }catch(e){
+        xhr=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xhr.open("post","./disagreeRegister.php",true);
+    //set header
+    xhr.setRequestHeader('content-type','application/x-www-form-urlencoded');
+    //send data
+    xhr.send("email="+email);
+    //action
+    xhr.onreadystatechange=function(){
+        if(xhr.readyState===4){
+            if(xhr.status===200){
+                let result = JSON.parse(xhr.responseText);
+                console.log(result);
+                if (result.status === "success"){
+                    // location.reload();
                 } else if (result.status === "fail"){
                     alert(result.reason);
                 }
