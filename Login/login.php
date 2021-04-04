@@ -1,19 +1,18 @@
 <?php
 require "../php_public/db.php";
 
-//  表单提交后...
 $posts = $_POST;
-//  清除一些空白符号
 foreach ($posts as $key => $value) {
     $posts[$key] = trim($value);
 }
 $password = $posts["pwd"];
 $email= $posts["email"];
 
-// 创建连接
+// create connect
 $database = new DataBase();
 $sql = "select id, name, age, gender, email, telephone, role from user where email='$email' and password='$password'";
 $result = $database->execute($sql);
+//get result in array
 $result_array = $database->fetchAssoc();
 
 $database->close();

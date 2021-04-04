@@ -26,7 +26,7 @@ xhr.onreadystatechange=function(){
 
 
         }else{
-            alert("错误"+xhr.status);
+            alert("error: "+xhr.status);
         }
     }
 };

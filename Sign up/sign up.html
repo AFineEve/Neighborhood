@@ -22,18 +22,19 @@
         </div>
     </nav>
 	<div align="center">
-		<form class="sign_up_form">
+		<form action="register.php" method="post" id="register_form" enctype="multipart/form-data">
 			<div id="aid">
+
 				<h3>What do you want Sign up for</h3>
 				<table>
 					<tr>
 						<td><label>Register Type:</label></td>
 						<td>
-								<select id="type_name" onchange="listen_sign_up_type_selected()">
+								<select id="role_name" name="role_name" onchange="listen_sign_up_type_selected()">
 								<option value=""></option>
-								<option value="Subdivision">Subdivision</option>
-								<option value="Building">Building</option>
-								<option value="Apartment">Apartment</option>
+								<option value="subdivision">Subdivision</option>
+								<option value="building">Building</option>
+								<option value="apartment">Apartment</option>
 							</select>
 						</td>
 					</tr>
@@ -41,6 +42,7 @@
 
 
 			</div>
+
 
 			<div id="type_id"></div>
 			<div id="personal_information" style="display: none;">
@@ -52,11 +54,11 @@
 					</tr>
 					<tr>
 						<td>Password:</td>
-						<td><input type="text" id="password" name="password"></td>
+						<td><input type="password" id="password" name="password"></td>
 					</tr>
 					<tr>
 						<td>Confirm Password:</td>
-						<td><input type="text" id="c_password" name="c_password"></td>
+						<td><input type="password" id="c_password" name="c_password"></td>
 					</tr>
 					<tr>
 						<td>Age:</td>
@@ -90,12 +92,12 @@
 						<td><input type="file" id="attachment" name="attachment" value="Choose file" style="width: 250px"></td>
 					</tr>
 				</table>
+
 			</div>
-
-			<button class="button button_send">Sign up</button>
-
-
 		</form>
+			<button class="button button_send" onclick="register()">Sign up</button>
+
+
 	</div>
 
 
@@ -103,39 +105,42 @@
 </body>
 <script type="text/javascript">
 	function listen_sign_up_type_selected() {
-		var myselect=document.getElementById("type_name");
+		var myselect=document.getElementById("role_name");
 		var type = myselect.value;
 		console.log(type);
-		if (type == "Subdivision"){
-			var input = "<h3>Your Preference</h3><table><tr><td>Subdivision Name:</td><td><input type=\"text\"></td></tr>";
-			input += "<tr><td>Subdivision Address:</td><td><input type=\"text\"></td></tr></table>";
+		if (type == "subdivision"){
+			var input = "<h3>Your Preference</h3><table><tr><td>Subdivision Name:</td><td><input id=\"subdivision_name\" name=\"subdivision_name\" type=\"text\"></td></tr>";
+			input += "<tr><td>Subdivision Address:</td><td><input id=\"subdivision_address\" name=\"subdivision_address\" type=\"text\" ></td></tr></table>";
 			var sign_up_id_div = document.getElementById("type_id");
 			sign_up_id_div.innerHTML = input;
 		}
-		if (type == "Building"){
-			var input = "<h3>Your Preference</h3><table><tr><td>Subdivision Name:</td><td><select id=\"subdivision_name\"></select></td></tr>";
-			input += "<tr><td>Building Number</td><td><input type=\"text\"></td></tr></table>";
+		if (type == "building"){
+			var input = "<h3>Your Preference</h3><table><tr><td>Subdivision Name:</td><td><select id=\"subdivision_name\" name=\"subdivision_name\"></select></td></tr>";
+			input += "<tr><td>Building Number</td><td><input type=\"text\" id=\"building_number\" name=\"building_number\"></td></tr></table>";
 			var sign_up_id_div = document.getElementById("type_id");
 			sign_up_id_div.innerHTML = input;
-			var subdivision_name = document.getElementById("subdivision_name");
-			for (var i = 0; i < 5; i++) {
-				subdivision_name.options.add(new Option(i+1, i+1));
-			}
+			//get subdivision info
+			getInfo("subdivision");
+
 		}
-		if (type == "Apartment"){
-			var input = "<h3>Your Preference</h3><table><tr><td>Subdivision Name:</td><td><select id=\"subdivision_name\"></select></td></tr>";
-			input += "<tr><td>Building Number</td><td><select id=\"building_number\"></select></td></tr>";
-			input += "<tr><td>Apartment Number</td><td><select id=\"apartment_number\"></select></td></tr></table>";
+		if (type == "apartment"){
+			//需要获取subdivision和building
+			var input = "<h3>Your Preference</h3><table><tr><td>Subdivision Name:</td><td><select id=\"subdivision_name\" name=\"subdivision_name\" onchange='getBuilding()'></select></td></tr>";
+			input += "<tr><td>Building Number</td><td><select id=\"building_number\" name=\"building_number\"></select></td></tr>";
+			input += "<tr><td>Apartment Number</td><td><select id=\"apartment_number\" name=\"apartment_number\"></select></td></tr></table>";
 			var sign_up_id_div = document.getElementById("type_id");
 			sign_up_id_div.innerHTML = input;
 			var subdivision_name = document.getElementById("subdivision_name");
 			var building_number = document.getElementById("building_number");
 			var apartment_number = document.getElementById("apartment_number");
-			for (var i = 0; i < 5; i++) {
-				subdivision_name.options.add(new Option(i+1, i+1));
-				building_number.options.add(new Option(i+1, i+1));
-				apartment_number.options.add(new Option(i+1, i+1));
+			for (var i = 1; i < 5; i++) {
+				for (var j = 1; j < 5; j++){
+					apartment_number.options.add(new Option(i+"0"+j, i+"0"+j));
+				}
+
 			}
+			//get subdivision info and building info
+			getInfo("subdivision");
 		}
 
 
