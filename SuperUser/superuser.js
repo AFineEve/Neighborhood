@@ -86,7 +86,7 @@ function getRegisterInfo(email) {
                     }
                     if (result.registerInfo.length !== 0) {
                         if (result.userInfo.data[0].role === "subdivision"){
-                            var info = "address: " + result.userInfo.data[0].address;
+                            var info = "address: " + result.registerInfo.data[0].address;
                             document.getElementById('info').innerHTML=info;
                         }
                         if (result.userInfo.data[0].role === "building"){
