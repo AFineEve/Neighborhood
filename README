@@ -1,2 +1,19 @@
 The link of our UTA Cloud Deployment is:
 http://neighborhood.mxl8591.uta.cloud/Homepage/homepage.html
+
+You can login by using these user:
+subdivision role:
+    email: subdivision@test.com
+    password: 1qaz2wsx
+
+building role:
+    email: building@test.com
+    password: 1qaz2wsx
+
+apartment role:
+    email: apartment@test.com
+    password: 1qaz2wsx
+
+Super User:
+    email: superuser@test.com
+    password: 1qaz2wsx
