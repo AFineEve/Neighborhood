@@ -14,14 +14,17 @@ $sql = "select id, name, age, gender, email, telephone, role from user where ema
 $result_info = $database->execute($sql);
 //get result in array
 $user_info = $database->fetchAssoc();
-
-$id = $user_info["id"];
-$sql = "select id as role_id from ".$user_info["role"]." where owner_id = '$id'";
-$result_info = $database->execute($sql);
+if ($user_info["role"] != "superuser"){
+    $id = $user_info["id"];
+    $sql = "select id as role_id from ".$user_info["role"]." where owner_id = '$id'";
+    $result_info = $database->execute($sql);
 //get result in array
-$role_info = $database->fetchAssoc();
 
-$result = array_merge($user_info, $role_info);
+    $role_info = $database->fetchAssoc();
+
+    $result = array_merge($user_info, $role_info);
+}
+$result = $user_info;
 $result["status"] = "success";
 
 $database->close();
