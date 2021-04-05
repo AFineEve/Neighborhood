@@ -10,11 +10,18 @@ if (isset($_SESSION["admin"]) && $_SESSION["admin"] === true) {
     // 创建连接
     $database = new DataBase();
     $sql = "select id, name, age, gender, email, telephone, role from user where id = '$id'";
-    $result = $database->execute($sql);
-    $result_array = $database->fetchAssoc();
-    $result_array["status"] = "success";
+    $result_info = $database->execute($sql);
+    $user_info = $database->fetchAssoc();
+
+    $sql = "select id as role_id from ".$user_info["role"]." where owner_id = '$id'";
+    $result_info = $database->execute($sql);
+    $role_info = $database->fetchAssoc();
+
+    $result = array_merge($user_info, $role_info);
+
+    $result["status"] = "success";
     $database->close();
-    echo json_encode($result_array);
+    echo json_encode($result);
 } else {
     //  验证失败，将 $_SESSION["admin"] 置为 false
     $_SESSION["admin"] = false;

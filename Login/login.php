@@ -10,7 +10,7 @@ $email= $posts["email"];
 
 // create connect
 $database = new DataBase();
-$sql = "select id, name, age, gender, email, telephone, role from user where email='$email' and password='$password'";
+$sql = "select id, name, age, gender, email, telephone, role from user where email='$email' and password='$password' and isCheck='yes'";
 $result_info = $database->execute($sql);
 //get result in array
 $user_info = $database->fetchAssoc();
