@@ -13,8 +13,8 @@ class DataBase{
     var $insert_id; // last insert id
     var $affected_rows; // affected rows
 
-
-    function __construct($host = "143.110.136.62", $user = "lori", $pwd = "Lori1995,.", $dbname = "neighborhood", $debug = false)
+    function __construct($host = "127.0.0.1", $user = "mxl8591_neighborhood", $pwd = "lzl47502ABC@@3", $dbname = "mxl8591_neighborhood", $debug = false)
+//    function __construct($host = "143.110.136.62", $user = "lori", $pwd = "Lori1995,.", $dbname = "neighborhood", $debug = false)
     {
         $this->host = $host;
         $this->user = $user;
