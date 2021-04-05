@@ -14,32 +14,39 @@ $sql = "select id, name, age, gender, email, telephone, role from user where ema
 $result_info = $database->execute($sql);
 //get result in array
 $user_info = $database->fetchAssoc();
-if ($user_info["role"] != "superuser"){
-    $id = $user_info["id"];
-    $sql = "select id as role_id from ".$user_info["role"]." where owner_id = '$id'";
-    $result_info = $database->execute($sql);
+if ($database->numRows() > 0){
+    if ($user_info["role"] != "superuser"){
+        $id = $user_info["id"];
+        $sql = "select id as role_id from ".$user_info["role"]." where owner_id = '$id'";
+        $result_info = $database->execute($sql);
 //get result in array
 
-    $role_info = $database->fetchAssoc();
+        $role_info = $database->fetchAssoc();
 
-    $result = array_merge($user_info, $role_info);
-}
-$result = $user_info;
-$result["status"] = "success";
-
-$database->close();
-
-if ($database->numRows() > 0) {
-    //  当验证通过后，启动 Session
-    session_start();
-    //  注册登陆成功的 admin 变量，并赋值 true
-    $_SESSION["admin"] = true;
-    $_SESSION["user_id"] = $result["id"];
+        $result = array_merge($user_info, $role_info);
+    }
+    $result = $user_info;
     $result["status"] = "success";
-    echo json_encode($result);
-} else {
+
+    $database->close();
+
+    if ($database->numRows() > 0) {
+        //  当验证通过后，启动 Session
+        session_start();
+        //  注册登陆成功的 admin 变量，并赋值 true
+        $_SESSION["admin"] = true;
+        $_SESSION["user_id"] = $result["id"];
+        $result["status"] = "success";
+        echo json_encode($result);
+    } else {
+        $result["status"] = "fail";
+        echo json_encode($result);
+    }
+} else{
     $result["status"] = "fail";
     echo json_encode($result);
 }
+
+
 
 

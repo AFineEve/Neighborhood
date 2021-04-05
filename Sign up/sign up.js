@@ -33,6 +33,7 @@ function verify() {
 }
 
 function register() {
+    checkBlank();
     if (document.getElementById("password").value != document.getElementById("c_password").value) {
         alert("The Confirm Password Does Not Match Password!");
         return;
@@ -41,6 +42,7 @@ function register() {
         alert("The Verification Code Is Wrong!");
         return;
     }
+
     var form = document.getElementById("register_form");
     console.log(form.age.value);
     // age,gender,email,tel validation
@@ -52,20 +54,6 @@ function register() {
     } else {
         alert("Please check your input format.")
     }
-
-    // var form = new FormData();
-    // form.append("subdivision_name", document.getElementById("subdivision_name").value);
-    // form.append("subdivision_address", document.getElementById("subdivision_address").value);
-    // form.append("name", document.getElementById("name").value);
-    // form.append("password", document.getElementById("password").value);
-    // form.append("age", document.getElementById("age").value);
-    // form.append("gender", document.getElementById("gender").value);
-    // form.append("email", document.getElementById("email").value);
-    // form.append("telephone", document.getElementById("telephone").value);
-    // form.append("attachment", document.getElementById("attachment").files[0]);
-    // ajax("post", form, "./register.php")
-    // form.append("name", document.getElementById("name").value);
-    // console.log(form.entries().next());
 }
 
 function checkName() {
@@ -212,5 +200,27 @@ function ajax(type, data, url) {
             }
         }
     };
+
+}
+
+function checkBlank() {
+    var select = document.getElementsByTagName('select');
+    for(var i =0;i < select.length;i++){
+        var index = select[i].selectedIndex; // 选中索引
+        var value = select[i].options[index].value; // 选中值
+        if (!value) {
+            alert("you need choose all fields");
+            break;
+        }
+
+    }
+    var input = document.getElementsByTagName('input');
+    for(var i =0;i < input.length;i++){
+        if (!input[i].value) {
+            alert("you need enter all fields");
+            break;
+        }
+
+    }
 
 }

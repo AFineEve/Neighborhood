@@ -23,9 +23,9 @@ $saveTypeInfo = saveTypeInfo($posts, $id);
 
 
 if ($saveUser == 1 && $saveAttachment == 1 && $saveTypeInfo== 1){
-    echo "successful";
+    Header("Location:../Sign up/successful.html");
 } else {
-    echo "error";
+    Header("Location:../Sign up/fail.html");
 }
 
 
