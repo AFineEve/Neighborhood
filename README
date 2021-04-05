@@ -1,2 +1,22 @@
 The link of our UTA Cloud Deployment is:
 http://neighborhood.mxl8591.uta.cloud/Homepage/homepage.html
+
+
+Credentials:
+- We have 4 roles in our website design. Each role's account credential is listed below.
+
+- Subdivision Owner
+email: subdivision@test.com
+password: 1qaz2wsx
+
+- Building Owner
+email: building@test.com
+password: 1qaz2wsx
+
+- Apartment Owner
+email: apartment@test.com
+password: 1qaz2wsx
+
+- Super User
+email: superuser@test.com
+password: 1qaz2wsx
